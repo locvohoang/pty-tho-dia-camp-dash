@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T17:11:23.871457Z",
+  "generatedAt": "2026-07-15T17:25:15Z",
   "campaignStart": "2026-07-01",
   "campaignEnd": "2026-08-31",
   "manual": {
@@ -448,39 +448,152 @@
   },
   "meta": {
     "summary": {
-      "available": false,
-      "error": "META_ACCESS_TOKEN not set"
-    },
-    "daily": {
-      "available": false,
-      "error": "META_ACCESS_TOKEN not set"
+      "available": true,
+      "data": [
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "impressions": 23942,
+          "reach": 15042,
+          "spend_sgd": 25.56
+        },
+        {
+          "campaign_id": "120251321695200319",
+          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
+          "impressions": 272434,
+          "reach": 219376,
+          "spend_sgd": 143.92
+        },
+        {
+          "campaign_id": "120251321467150319",
+          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
+          "impressions": 2901,
+          "reach": 2272,
+          "spend_sgd": 29.23
+        },
+        {
+          "campaign_id": "120251297310390319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_0726_0826",
+          "impressions": 167308,
+          "reach": 79506,
+          "spend_sgd": 200.23
+        },
+        {
+          "campaign_id": "120250905291160319",
+          "campaign_name": "brand_eng_sale_pty_b2c_0726",
+          "impressions": 837692,
+          "reach": 481776,
+          "spend_sgd": 875.31
+        }
+      ]
     }
   },
   "tiktok": {
-    "available": false,
-    "error": "TIKTOK_ACCESS_TOKEN not set"
+    "available": true,
+    "data": [
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-07",
+        "impressions": 33851,
+        "reach": 33293,
+        "spend_usd": 8.23
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-08",
+        "impressions": 88916,
+        "reach": 85854,
+        "spend_usd": 20.56
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-09",
+        "impressions": 81201,
+        "reach": 78859,
+        "spend_usd": 21.09
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-10",
+        "impressions": 63897,
+        "reach": 46522,
+        "spend_usd": 15.64
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-11",
+        "impressions": 95537,
+        "reach": 65361,
+        "spend_usd": 20.91
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-12",
+        "impressions": 65369,
+        "reach": 47222,
+        "spend_usd": 13.42
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-13",
+        "impressions": 713,
+        "reach": 684,
+        "spend_usd": 0.11
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-14",
+        "impressions": 2,
+        "reach": 2,
+        "spend_usd": 0
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-15",
+        "impressions": 0,
+        "reach": 0,
+        "spend_usd": 0
+      },
+      {
+        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_reach_pty_thodiacamp_0726",
+        "date": "2026-07-16",
+        "impressions": 0,
+        "reach": 0,
+        "spend_usd": 0
+      }
+    ]
   },
   "paidLink": {
     "totalBuzz": 1126,
     "totalEngagement": 37839,
     "byChannel": [
       {
-        "name": "Facebook Owned",
+        "channel": "Facebook Owned",
         "post": 16,
+        "repost": 0,
         "comment": 886,
         "share": 200,
-        "repost": 0,
         "react": 36466,
         "save": 0,
         "buzz": 1102,
         "engagement": 37552
       },
       {
-        "name": "Tiktok Owned",
+        "channel": "Tiktok Owned",
         "post": 2,
+        "repost": 0,
         "comment": 5,
         "share": 17,
-        "repost": 0,
         "react": 252,
         "save": 13,
         "buzz": 24,
