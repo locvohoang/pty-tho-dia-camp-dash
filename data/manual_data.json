@@ -1,0 +1,81 @@
+{
+  "_readme": "File này Lox tự sửa tay + commit khi cần (OOH actual, ngân sách thật, post mới trong Paid link...). Script build_dashboard.py sẽ ĐỌC file này, KHÔNG ghi đè nó.",
+
+  "campaign": {
+    "name": "Thổ Địa Campaign — Nhà Tốt (Quận 12)",
+    "timeline": "01/07/2026 – 30/08/2026",
+    "ta": "Millennials/Young couple 27–35, HCM"
+  },
+
+  "kpiTargets": {
+    "socialBuzz": 25700,
+    "socialEngagement": 180833,
+    "awarenessCoverage": 58,
+    "dwl": 118,
+    "appInstall": 20200
+  },
+
+  "rfTarget": { "impression": 12000000, "reach": 1200000 },
+  "awarenessTarget": { "impression": 20720000, "reach": 3180000, "frequency": 6.5, "budgetSGD": 14500 },
+
+  "weeklyImpressionTargetFB": [
+    { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 720000 },
+    { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 1200000 },
+    { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 2091513 },
+    { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 3342269 },
+    { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 5433782 },
+    { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 1837692 },
+    { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 2245865 },
+    { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 2449039 },
+    { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 2061000 }
+  ],
+  "weeklyImpressionTargetTiktok": [
+    { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 0 },
+    { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 0 },
+    { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 939513 },
+    { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 1409269 },
+    { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 2348782 },
+    { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 768692 },
+    { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 960865 },
+    { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 1153039 },
+    { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 981000 }
+  ],
+
+  "budgetPlan": [
+    { "name": "OOH (Jul–Aug)", "plan": 1300000000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": true },
+    { "name": "OOH (Sep–Dec)", "plan": 900000000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": true },
+    { "name": "Collect locality data (Onboard thổ địa + CTV review)", "plan": 150000000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": true },
+    { "name": "Media — Facebook ads", "plan": 150000000, "actual": null, "source": "Auto (Meta Graph API)", "includeInTotal": true },
+    { "name": "Media — Tiktok ads", "plan": 50000000, "actual": null, "source": "Auto (TikTok Business API)", "includeInTotal": true },
+    { "name": "Media — Booking (Group/Tiktoker/Youtube)", "plan": 200000000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": true },
+    { "name": "Media — Threads", "plan": 50000000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": true },
+    { "name": "Media — Adtima", "plan": 50000000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": true },
+    { "name": "Media — Google Maps review + Seeding comment", "plan": 50000000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": true },
+    { "name": "App install", "plan": 205458828, "actual": 0, "source": "Manual — cần Airbridge/Branch.io", "includeInTotal": false },
+    { "name": "DWL", "plan": 346500000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": false }
+  ],
+
+  "oohPlan": { "L1": 10, "L2": 10, "L3": 35 },
+  "oohActual": { "L1": 0, "L2": 2, "L3": 0 },
+
+  "paidLinkPosts": [
+    { "date": "2026-07-04", "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống (Single)", "platform": "Facebook", "post": 1, "repost": 0, "comment": 7, "share": 17, "react": 485, "save": 0, "view": 0 },
+    { "date": "2026-07-04", "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống (Video)", "platform": "Tiktok", "post": 1, "repost": 0, "comment": 1, "share": 9, "react": 70, "save": 7, "view": 358000 },
+    { "date": "2026-07-07", "title": "Có thể bạn chưa biết — khoảng cách nhà đến chỗ làm", "platform": "Facebook", "post": 1, "repost": 0, "comment": 0, "share": 1, "react": 7, "save": 0, "view": 0 },
+    { "date": "2026-07-07", "title": "Ngoài chi phí mua nhà, những điều người sắp mua nhà phải biết sớm", "platform": "Facebook", "post": 1, "repost": 0, "comment": 0, "share": 1, "react": 7, "save": 0, "view": 0 },
+    { "date": "2026-07-07", "title": "Điền vào chỗ trống: 'Ước gì lúc mua nhà mình đã biết...'", "platform": "Facebook", "post": 1, "repost": 0, "comment": 3, "share": 1, "react": 15, "save": 0, "view": 0 },
+    { "date": "2026-07-07", "title": "Người mua nhà hay hối hận nhất ở tháng thứ mấy?", "platform": "Facebook", "post": 1, "repost": 0, "comment": 39, "share": 22, "react": 4500, "save": 0, "view": 0 },
+    { "date": "2026-07-09", "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì? (Single)", "platform": "Facebook", "post": 1, "repost": 0, "comment": 19, "share": 13, "react": 482, "save": 0, "view": 0 },
+    { "date": "2026-07-09", "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì? (Video)", "platform": "Tiktok", "post": 1, "repost": 0, "comment": 4, "share": 8, "react": 182, "save": 6, "view": 132000 },
+    { "date": "2026-07-09", "title": "Nếu phải chọn: nhà đẹp chưa rõ khu vực, hay nhà thường nhưng biết rõ khu?", "platform": "Facebook", "post": 1, "repost": 0, "comment": 0, "share": 2, "react": 298, "save": 0, "view": 0 },
+    { "date": "2026-07-09", "title": "Nếu ai đó nói 3–5 tỷ ở Sài Gòn hết cửa chọn nhà tốt — họ đang nhìn sai chỗ", "platform": "Facebook", "post": 1, "repost": 0, "comment": 428, "share": 27, "react": 11400, "save": 0, "view": 0 },
+    { "date": "2026-07-10", "title": "Đố bạn có bao nhiêu khoản chi phí phát sinh sau khi mua nhà?", "platform": "Facebook", "post": 1, "repost": 0, "comment": 33, "share": 79, "react": 5300, "save": 0, "view": 0 },
+    { "date": "2026-07-10", "title": "Trên giấy tờ bạn biết đủ hết, nhưng có những thứ không ai viết trên giấy", "platform": "Facebook", "post": 1, "repost": 0, "comment": 2, "share": 4, "react": 757, "save": 0, "view": 0 },
+    { "date": "2026-07-10", "title": "Cặp vợ chồng trẻ mua nhà: thích sầm uất vs thích yên tĩnh — ai thắng?", "platform": "Facebook", "post": 1, "repost": 0, "comment": 11, "share": 1, "react": 732, "save": 0, "view": 0 },
+    { "date": "2026-07-11", "title": "Cùng 1 cục tiền mua nhà nên chọn náo nhiệt gần trung tâm hay yên tĩnh không gian rộng", "platform": "Facebook", "post": 1, "repost": 0, "comment": 241, "share": 8, "react": 7600, "save": 0, "view": 0 },
+    { "date": "2026-07-11", "title": "Nếu có người sống 10 năm ở khu bạn cân nhắc mua nhà kể thật — bạn hỏi gì đầu tiên?", "platform": "Facebook", "post": 1, "repost": 0, "comment": 27, "share": 5, "react": 1600, "save": 0, "view": 0 },
+    { "date": "2026-07-11", "title": "Có khu đang bị đồn là 'Thành phố đêm' (Q.12 cúp điện nguyên ngày) — đoán xem khu nào?", "platform": "Facebook", "post": 1, "repost": 0, "comment": 58, "share": 14, "react": 2100, "save": 0, "view": 0 },
+    { "date": "2026-07-11", "title": "[ThoDia][B2C] Nhà vùng ven không thua gì trung tâm", "platform": "Facebook", "post": 1, "repost": 0, "comment": 17, "share": 4, "react": 721, "save": 0, "view": 0 },
+    { "date": "2026-07-13", "title": "[ThoDia][B2C] Main KV", "platform": "Facebook", "post": 1, "repost": 0, "comment": 1, "share": 1, "react": 462, "save": 0, "view": 0 }
+  ]
+}
