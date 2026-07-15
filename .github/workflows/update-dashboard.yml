@@ -1,0 +1,50 @@
+name: Update Thổ Địa dashboard
+
+on:
+  schedule:
+    # 23:00 UTC = 06:00 sáng giờ VN (UTC+7). Đổi giờ tại đây nếu muốn khung giờ khác.
+    - cron: "0 23 * * *"
+  workflow_dispatch: {}   # nút "Run workflow" thủ công trong tab Actions — dùng khi cần refresh ngay ("real-time")
+  push:
+    paths:
+      - "data/manual_data.json"   # tự build lại ngay khi Lox sửa + push file này (vd. cập nhật OOH actual)
+
+permissions:
+  contents: write   # cần quyền này để workflow tự commit lại docs/data.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch data + build docs/data.json
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_AD_ACCOUNT_ID: ${{ secrets.META_AD_ACCOUNT_ID }}
+          TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
+          TIKTOK_ADVERTISER_ID: ${{ secrets.TIKTOK_ADVERTISER_ID }}
+        run: python scripts/build_dashboard.py
+
+      - name: Send Slack report
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+        run: python scripts/notify_slack.py
+
+      - name: Commit + push updated data.json
+        run: |
+          git config user.name "thodia-dashboard-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data.json
+          git diff --staged --quiet && echo "No changes to commit" || git commit -m "chore: refresh dashboard data [skip ci]"
+          git push
