@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thổ Địa Campaign Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+<style>
+  :root {
+    --orange:#F5811F; --orange-dark:#D9660A; --ink:#1D2430; --ink-soft:#5B6472; --line:#E6E8EC;
+    --bg:#F7F8FA; --card:#fff; --green:#1B8A5A; --green-bg:#E6F6EE; --amber:#B8790A; --amber-bg:#FEF3DC;
+    --red:#C23B3B; --red-bg:#FCEAEA; --blue:#2563AA; --blue-bg:#E8F0FA;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; font-size:14px; }
+  .wrap { max-width:1280px; margin:0 auto; padding:20px 24px 60px; }
+  .hero { background:linear-gradient(135deg,var(--orange),var(--orange-dark)); border-radius:14px; padding:22px 26px; color:#fff; }
+  .hero h1 { margin:0 0 4px; font-size:21px; }
+  .hero .sub { font-size:12.5px; opacity:.92; }
+  .meta-note { font-size:11.5px; text-align:right; opacity:.9; margin-top:6px; }
+  .section { margin-top:22px; }
+  .section-title { font-size:15px; font-weight:700; margin-bottom:10px; }
+  .section-title .n { color:var(--orange-dark); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .badge { display:inline-flex; align-items:center; gap:4px; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px; }
+  .badge.live { background:var(--green-bg); color:var(--green); }
+  .badge.dummy { background:var(--amber-bg); color:var(--amber); }
+  .badge.blocked { background:var(--red-bg); color:var(--red); }
+  .badge.snapshot { background:var(--green-bg); color:var(--green); }
+  .kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  @media (max-width:900px){ .kpi-grid{grid-template-columns:repeat(2,1fr);} }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+  .kpi .label { font-size:11.5px; color:var(--ink-soft); font-weight:600; display:flex; justify-content:space-between; }
+  .kpi .value { font-size:24px; font-weight:800; margin-top:4px; }
+  .kpi .target { font-size:11.5px; color:var(--ink-soft); margin-top:2px; }
+  .progress-track { height:6px; background:#EEF0F3; border-radius:4px; margin-top:8px; overflow:hidden; }
+  .progress-fill { height:100%; background:var(--orange); }
+  .progress-fill.ok { background:var(--green); }
+  .progress-fill.warn { background:var(--amber); }
+  .pct-tag { font-size:11px; font-weight:700; margin-top:4px; display:block; }
+  table.simple { width:100%; border-collapse:collapse; font-size:12.5px; }
+  table.simple th, table.simple td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line); }
+  table.simple th { color:var(--ink-soft); font-weight:700; font-size:11.5px; text-transform:uppercase; }
+  table.simple td.num, table.simple th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  tr.total-row td { font-weight:800; border-top:2px solid var(--ink); }
+  .tabs { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
+  .tab-btn { border:1px solid var(--line); background:#fff; padding:7px 14px; border-radius:8px; font-size:12.5px; font-weight:600; cursor:pointer; color:var(--ink-soft); }
+  .tab-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+  .chart-box { position:relative; height:280px; }
+  .chart-box.tall { height:320px; }
+  .status-line { font-size:11px; color:var(--ink-soft); margin-top:6px; }
+  .err { font-size:12px; color:var(--red); background:var(--red-bg); padding:8px 10px; border-radius:8px; }
+  .info { font-size:12px; background:var(--blue-bg); color:var(--ink); border-left:3px solid var(--blue); padding:8px 10px; border-radius:6px; margin-bottom:14px; }
+  .subhead { font-size:12.5px; font-weight:700; margin:18px 0 8px; }
+  .highlight-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:16px; }
+  @media (max-width:900px){ .highlight-grid{grid-template-columns:repeat(2,1fr);} }
+  .htile { background:#FBFBFC; border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .htile .hlabel { font-size:11px; color:var(--ink-soft); font-weight:700; text-transform:uppercase; }
+  .htile .hvalue { font-size:20px; font-weight:800; margin-top:3px; }
+  .htile .htarget { font-size:11px; color:var(--ink-soft); margin-top:2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>🏠 [PTY] Thổ Địa Campaign — Quận 12</h1>
+    <div class="sub" id="heroSub">Timeline: 01/07/2026 – 30/08/2026 · TA: Millennials/Young couple 27–35, HCM</div>
+    <div class="meta-note" id="lastUpdated">Đang tải data.json...</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="n">①</span> Success Metrics — Actual vs KPI</div>
+    <div class="kpi-grid" id="kpiGrid"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="n">②</span> Budget Spending — Actual vs Plan</div>
+    <div class="card">
+      <table class="simple">
+        <thead><tr><th>Hoạt động / Kênh</th><th class="num">Plan (VND)</th><th class="num">Actual (VND)</th><th class="num">% Achieved</th><th>Nguồn</th></tr></thead>
+        <tbody id="budgetBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="n">③</span> Detailed performance</div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="t1">Awareness</button>
+      <button class="tab-btn" data-tab="t2">Social buzz &amp; Social engagement</button>
+      <button class="tab-btn" data-tab="t3">Traffic / DAU / DWL</button>
+    </div>
+
+    <div class="tab-panel active card" id="t1">
+      <div class="highlight-grid" id="awarenessHighlight"></div>
+      <div class="subhead">Facebook</div>
+      <table class="simple"><thead><tr><th>Campaign</th><th>Objective</th><th class="num">Impression</th><th class="num">Reach</th><th class="num">Frequency</th><th class="num">Spend (SGD)</th><th class="num">Spend (VND)</th></tr></thead>
+        <tbody id="metaBodyFB"></tbody></table>
+      <div class="status-line" id="metaStatus"></div>
+
+      <div class="subhead">Tiktok</div>
+      <table class="simple"><thead><tr><th>Campaign</th><th class="num">Impression</th><th class="num">Reach</th><th class="num">Video views</th><th class="num">Spend (USD)</th></tr></thead>
+        <tbody id="tiktokBody"></tbody></table>
+      <div class="status-line" id="tiktokStatus"></div>
+
+      <div class="subhead">Impression theo ngày vs Target — Facebook</div>
+      <div class="chart-box tall"><canvas id="fbImpChart"></canvas></div>
+
+      <div class="subhead">Impression theo ngày vs Target — Tiktok</div>
+      <div class="chart-box tall"><canvas id="tkImpChart"></canvas></div>
+    </div>
+
+    <div class="tab-panel card" id="t2">
+      <div class="highlight-grid" style="grid-template-columns:repeat(2,1fr); max-width:560px;" id="buzzHighlight"></div>
+      <div class="subhead">% phân bổ theo kênh</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div class="chart-box"><canvas id="buzzPie"></canvas></div>
+        <div class="chart-box"><canvas id="engPie"></canvas></div>
+      </div>
+      <div class="subhead">Chi tiết theo kênh</div>
+      <table class="simple"><thead><tr><th>Kênh</th><th class="num">Post</th><th class="num">Comment</th><th class="num">Share</th><th class="num">Repost</th><th class="num">React</th><th class="num">Save</th><th class="num">Buzz</th><th class="num">Engagement</th></tr></thead>
+        <tbody id="buzzBody"></tbody></table>
+      <div class="subhead">Top 5 posts</div>
+      <table class="simple"><thead><tr><th>Ngày</th><th>Title</th><th>Platform</th><th class="num">Buzz</th><th class="num">Engagement</th></tr></thead>
+        <tbody id="topPostsBody"></tbody></table>
+    </div>
+
+    <div class="tab-panel card" id="t3">
+      <div class="info">🚧 Traffic / DAU / DWL cần BigQuery (chotot-dwh) — bản GitHub này chưa nối được vì cần GCP service account riêng. Xem README.md để biết cách bổ sung khi có quyền.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function fmt(n){ if(n===null||n===undefined||isNaN(n)) return '—'; return Math.round(n).toLocaleString('vi-VN'); }
+function fmt2(n){ if(n===null||n===undefined||isNaN(n)) return '—'; return n.toLocaleString('vi-VN',{maximumFractionDigits:2}); }
+function pct(a,t){ if(!t) return null; return (a/t)*100; }
+function pctClass(p){ if(p===null) return ''; if(p>=90) return 'ok'; if(p>=50) return 'warn'; return ''; }
+function statusDot(active,label){ const c = active ? '#1B8A5A' : '#C23B3B'; return `<span title="${label||''}" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c};margin-right:6px;"></span>`; }
+
+const FX_SGD_VND = 20000;
+const FX_USD_SGD = 1.294;
+const FX_USD_VND = 26260;
+const REACH_CAMPAIGN_NAME = 'brand_reach_pty_thodiacamp_b2c_0726_0826';
+
+fetch('./data.json?t=' + Date.now()).then(r => r.json()).then(render).catch(e => {
+  document.getElementById('lastUpdated').textContent = 'Lỗi tải data.json: ' + e.message;
+});
+
+function render(data) {
+  document.getElementById('lastUpdated').textContent = 'Cập nhật lúc: ' + new Date(data.generatedAt).toLocaleString('vi-VN');
+
+  const manual = data.manual;
+  const metaOk = data.meta && data.meta.summary && data.meta.summary.available;
+  const metaRows = metaOk ? data.meta.summary.data : [];
+  const tkOk = data.tiktok && data.tiktok.available;
+  const tkRows = tkOk ? data.tiktok.data : [];
+
+  // ---- Awareness highlight + FB table ----
+  let totalImp=0, totalReach=0, totalSpendSGD=0, rfImp=null, rfReach=null;
+  const fbBody = document.getElementById('metaBodyFB');
+  fbBody.innerHTML = '';
+  metaRows.forEach(c => {
+    totalImp += c.impressions; totalReach += c.reach; totalSpendSGD += c.spend_sgd;
+    if (c.campaign_name === REACH_CAMPAIGN_NAME) { rfImp = c.impressions; rfReach = c.reach; }
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${statusDot(c.status==='ACTIVE', c.status)}${c.campaign_name}</td><td>${c.objective||''}</td>
+      <td class="num">${fmt(c.impressions)}</td><td class="num">${fmt(c.reach)}</td><td class="num">${fmt2(c.frequency)}</td>
+      <td class="num">${fmt2(c.spend_sgd)}</td><td class="num">${fmt(c.spend_sgd*FX_SGD_VND)}</td>`;
+    fbBody.appendChild(tr);
+  });
+  if (metaRows.length) {
+    const tr = document.createElement('tr'); tr.className='total-row';
+    tr.innerHTML = `<td>TỔNG Facebook (${metaRows.length})</td><td>—</td><td class="num">${fmt(totalImp)}</td><td class="num">${fmt(totalReach)}</td><td>—</td><td class="num">${fmt2(totalSpendSGD)}</td><td class="num">${fmt(totalSpendSGD*FX_SGD_VND)}</td>`;
+    fbBody.appendChild(tr);
+  } else {
+    fbBody.innerHTML = `<tr><td colspan="7"><div class="err">${metaOk===false ? 'Meta Ads: ' + (data.meta.summary ? data.meta.summary.error : data.meta.error) : 'Không có data'}</div></td></tr>`;
+  }
+  document.getElementById('metaStatus').textContent = metaOk ? `Auto (Meta Graph API) · ${metaRows.length} campaigns` : 'Meta Ads chưa khả dụng — kiểm tra META_ACCESS_TOKEN trong GitHub Secrets';
+
+  // ---- Tiktok table ----
+  let tkImp=0, tkReach=0, tkViews=0, tkSpendUSD=0;
+  const byTkCampaign = {};
+  tkRows.forEach(r => {
+    const c = byTkCampaign[r.campaign_name] || (byTkCampaign[r.campaign_name] = {impressions:0,reach:0,video_views:0,spend_usd:0});
+    c.impressions += r.impressions; c.reach += r.reach; c.video_views += r.video_views; c.spend_usd += r.spend_usd;
+  });
+  const tkBody = document.getElementById('tiktokBody');
+  tkBody.innerHTML = '';
+  Object.entries(byTkCampaign).forEach(([name,c]) => {
+    tkImp += c.impressions; tkReach += c.reach; tkViews += c.video_views; tkSpendUSD += c.spend_usd;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${name}</td><td class="num">${fmt(c.impressions)}</td><td class="num">${fmt(c.reach)}</td><td class="num">${fmt(c.video_views)}</td><td class="num">${fmt2(c.spend_usd)}</td>`;
+    tkBody.appendChild(tr);
+  });
+  if (!Object.keys(byTkCampaign).length) {
+    tkBody.innerHTML = `<tr><td colspan="5"><div class="err">${tkOk===false ? 'TikTok Ads: ' + data.tiktok.error : 'Không có data'}</div></td></tr>`;
+  }
+  document.getElementById('tiktokStatus').textContent = tkOk ? `Auto (TikTok Business API) · ${Object.keys(byTkCampaign).length} campaigns` : 'TikTok Ads chưa khả dụng — kiểm tra TIKTOK_ACCESS_TOKEN trong GitHub Secrets';
+
+  const awHighlight = document.getElementById('awarenessHighlight');
+  const totalImpAll = totalImp + tkImp, totalReachAll = totalReach + tkReach;
+  const spendSGDAll = totalSpendSGD + tkSpendUSD*FX_USD_SGD;
+  const at = manual.awarenessTarget;
+  awHighlight.innerHTML = [
+    {l:'Total Impression', v: totalImpAll, t: at.impression},
+    {l:'Total Reach', v: totalReachAll, t: at.reach},
+    {l:'Frequency', v: totalReachAll ? totalImpAll/totalReachAll : null, t: at.frequency},
+    {l:'Total budget spending (SGD)', v: spendSGDAll, t: at.budgetSGD},
+  ].map(x => `<div class="htile"><div class="hlabel">${x.l}</div><div class="hvalue">${x.v===null?'—':fmt2(x.v)}</div><div class="htarget">Target: ${fmt2(x.t)}${x.v!==null?' · '+fmt2(pct(x.v,x.t))+'% target':''}</div></div>`).join('');
+
+  // ---- KPI grid ----
+  const kpiGrid = document.getElementById('kpiGrid');
+  const pReach = rfReach!==null ? pct(rfReach, manual.rfTarget.reach) : null;
+  const oohTotal = manual.oohActual.L1+manual.oohActual.L2+manual.oohActual.L3;
+  const oohPlanTotal = manual.oohPlan.L1+manual.oohPlan.L2+manual.oohPlan.L3;
+  const pOOH = pct(oohTotal, oohPlanTotal);
+  const pBuzz = pct(data.paidLink.totalBuzz, manual.kpiTargets.socialBuzz);
+  const pEng = pct(data.paidLink.totalEngagement, manual.kpiTargets.socialEngagement);
+  kpiGrid.innerHTML = `
+    <div class="kpi"><div class="label">Reach <span class="badge ${metaOk?'live':'dummy'}">${metaOk?'AUTO':'N/A'}</span></div>
+      <div class="value">${rfReach!==null?fmt(rfReach):'—'}</div>
+      <div class="target">Target: ${fmt(manual.rfTarget.reach)} · Impression: ${rfImp!==null?fmt(rfImp):'—'} / ${fmt(manual.rfTarget.impression)}</div>
+      ${pReach!==null?`<div class="progress-track"><div class="progress-fill ${pctClass(pReach)}" style="width:${Math.min(pReach,100)}%"></div></div><span class="pct-tag">${fmt2(pReach)}% target</span>`:''}
+    </div>
+    <div class="kpi"><div class="label">No. of OOH <span class="badge dummy">MANUAL</span></div>
+      <div class="value">${oohTotal} <span style="font-size:13px;color:var(--ink-soft);">/ ${oohPlanTotal}</span></div>
+      <div class="progress-track"><div class="progress-fill ${pctClass(pOOH)}" style="width:${Math.min(pOOH,100)}%"></div></div><span class="pct-tag">${fmt2(pOOH)}% target</span>
+      <div class="target">L1 ${manual.oohActual.L1}/${manual.oohPlan.L1} · L2 ${manual.oohActual.L2}/${manual.oohPlan.L2} · L3 ${manual.oohActual.L3}/${manual.oohPlan.L3}</div>
+    </div>
+    <div class="kpi"><div class="label">Social buzz <span class="badge snapshot">SNAPSHOT</span></div><div class="value">${fmt(data.paidLink.totalBuzz)}</div>
+      <div class="target">Target: ${fmt(manual.kpiTargets.socialBuzz)} · ${fmt2(pBuzz)}% target</div></div>
+    <div class="kpi"><div class="label">Social engagement <span class="badge snapshot">SNAPSHOT</span></div><div class="value">${fmt(data.paidLink.totalEngagement)}</div>
+      <div class="target">Target: ${fmt(manual.kpiTargets.socialEngagement)} · ${fmt2(pEng)}% target</div></div>
+    <div class="kpi"><div class="label">DWL <span class="badge blocked">N/A</span></div><div class="value">—</div><div class="target">Target: ${fmt(manual.kpiTargets.dwl)} · cần nối BigQuery</div></div>
+    <div class="kpi"><div class="label">App Install <span class="badge blocked">N/A</span></div><div class="value">—</div><div class="target">Target: ${fmt(manual.kpiTargets.appInstall)} · cần Airbridge/Branch.io</div></div>
+    <div class="kpi"><div class="label">% Awareness coverage <span class="badge dummy">MANUAL</span></div><div class="value">—</div><div class="target">Target: ${manual.kpiTargets.awarenessCoverage}% · đo qua khảo sát BHT</div></div>
+  `;
+
+  // ---- Budget table ----
+  const budgetBody = document.getElementById('budgetBody');
+  let totalPlan=0, totalActual=0;
+  const rowsHtml = manual.budgetPlan.map(item => {
+    let actual = item.actual;
+    let badge = '<span class="badge dummy">MANUAL</span>';
+    if (item.name === 'Media — Facebook ads') { actual = metaOk ? totalSpendSGD*FX_SGD_VND : null; badge = metaOk ? '<span class="badge live">AUTO</span>' : '<span class="badge blocked">N/A</span>'; }
+    if (item.name === 'Media — Tiktok ads') { actual = tkOk ? tkSpendUSD*FX_USD_VND : null; badge = tkOk ? '<span class="badge live">AUTO</span>' : '<span class="badge blocked">N/A</span>'; }
+    if (item.includeInTotal) { totalPlan += item.plan; totalActual += (actual||0); }
+    const p = actual!==null ? pct(actual, item.plan) : null;
+    return `<tr><td>${item.name}</td><td class="num">${fmt(item.plan)}</td><td class="num">${actual===null?'—':fmt(actual)}</td><td class="num">${p===null?'—':fmt2(p)+'%'}</td><td>${badge} ${item.source}</td></tr>`;
+  }).join('');
+  const pTotal = pct(totalActual, totalPlan);
+  budgetBody.innerHTML = rowsHtml + `<tr class="total-row"><td>TỔNG (không gồm App install/DWL)</td><td class="num">${fmt(totalPlan)}</td><td class="num">${fmt(totalActual)}</td><td class="num">${fmt2(pTotal)}%</td><td></td></tr>`;
+
+  // ---- Buzz section ----
+  const bh = document.getElementById('buzzHighlight');
+  bh.innerHTML = `<div class="htile"><div class="hlabel">Social buzz <span class="badge snapshot">SNAPSHOT</span></div><div class="hvalue">${fmt(data.paidLink.totalBuzz)}</div><div class="htarget">Target: ${fmt(manual.kpiTargets.socialBuzz)}</div></div>
+    <div class="htile"><div class="hlabel">Social engagement <span class="badge snapshot">SNAPSHOT</span></div><div class="hvalue">${fmt(data.paidLink.totalEngagement)}</div><div class="htarget">Target: ${fmt(manual.kpiTargets.socialEngagement)}</div></div>`;
+
+  const buzzBody = document.getElementById('buzzBody');
+  buzzBody.innerHTML = data.paidLink.byChannel.map(c => `<tr><td>${c.name}</td><td class="num">${c.post}</td><td class="num">${c.comment}</td><td class="num">${c.share}</td><td class="num">${c.repost}</td><td class="num">${c.react}</td><td class="num">${c.save}</td><td class="num">${c.buzz}</td><td class="num">${c.engagement}</td></tr>`).join('');
+
+  const topBody = document.getElementById('topPostsBody');
+  topBody.innerHTML = data.paidLink.top5.map(p => `<tr><td>${p.date.split('-').reverse().join('/')}</td><td>${p.title}</td><td>${p.platform}</td><td class="num">${fmt(p.buzz)}</td><td class="num">${fmt(p.engagement)}</td></tr>`).join('');
+
+  const pieColors = ['#F5811F','#2563AA','#1B8A5A','#B8790A','#7A5AF8','#C23B3B'];
+  const labels = data.paidLink.byChannel.map(c=>c.name);
+  new Chart(document.getElementById('buzzPie'), { type:'doughnut', data:{ labels, datasets:[{ data: data.paidLink.byChannel.map(c=>c.buzz), backgroundColor: pieColors }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Social buzz theo kênh'} } } });
+  new Chart(document.getElementById('engPie'), { type:'doughnut', data:{ labels, datasets:[{ data: data.paidLink.byChannel.map(c=>c.engagement), backgroundColor: pieColors }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Social engagement theo kênh'} } } });
+
+  // ---- Impression trend charts ----
+  function dateRange(start,end){ const out=[]; let cur=new Date(start); const e=new Date(end); while(cur<=e){ out.push(cur.toISOString().slice(0,10)); cur.setDate(cur.getDate()+1);} return out; }
+  const dates = dateRange(data.campaignStart, data.campaignEnd);
+
+  const fbByDate = {};
+  metaRows.forEach(r => {}); // summary rows have no per-day; use data.meta.daily instead
+  if (metaOk && data.meta.daily && data.meta.daily.available) {
+    data.meta.daily.data.forEach(r => { fbByDate[r.date_start] = (fbByDate[r.date_start]||0) + r.impressions; });
+  }
+  const fbTargetSeries = dates.map(d => { const wk = manual.weeklyImpressionTargetFB.find(w=>d>=w.start&&d<=w.end); return wk ? Math.round(wk.target/7) : null; });
+  new Chart(document.getElementById('fbImpChart'), { type:'line', data:{ labels:dates, datasets:[
+      {label:'Impression thực tế (FB)', data:dates.map(d=>fbByDate[d]||null), borderColor:'#0D3B66', backgroundColor:'rgba(13,59,102,0.12)', fill:true, spanGaps:true, tension:0.2, pointRadius:2},
+      {label:'Target/ngày (TB tuần)', data:fbTargetSeries, borderColor:'#5B6472', borderDash:[6,4], fill:false, stepped:true, pointRadius:0},
+    ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{ticks:{maxTicksLimit:12}}} } });
+
+  const tkByDate = {};
+  tkRows.forEach(r => { tkByDate[r.date] = (tkByDate[r.date]||0) + r.impressions; });
+  const tkTargetSeries = dates.map(d => { const wk = manual.weeklyImpressionTargetTiktok.find(w=>d>=w.start&&d<=w.end); return wk ? Math.round(wk.target/7) : null; });
+  new Chart(document.getElementById('tkImpChart'), { type:'line', data:{ labels:dates, datasets:[
+      {label:'Impression thực tế (Tiktok)', data:dates.map(d=>tkByDate[d]||null), borderColor:'#111111', backgroundColor:'rgba(17,17,17,0.10)', fill:true, spanGaps:true, tension:0.2, pointRadius:2},
+      {label:'Target/ngày (TB tuần)', data:tkTargetSeries, borderColor:'#5B6472', borderDash:[6,4], fill:false, stepped:true, pointRadius:0},
+    ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{ticks:{maxTicksLimit:12}}} } });
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
