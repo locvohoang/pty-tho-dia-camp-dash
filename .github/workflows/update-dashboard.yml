@@ -1,13 +1,18 @@
 name: Update Thổ Địa dashboard
 
+# TẠM TẮT auto-trigger (schedule + push) từ 2026-07-16: vì META_ACCESS_TOKEN/TIKTOK_ACCESS_TOKEN
+# CHƯA được cấu hình trong GitHub Secrets, mỗi lần workflow này tự chạy sẽ build ra docs/data.json
+# với Meta/TikTok "unavailable" — ĐÈ MẤT data thật đang được Cowork scheduled task cập nhật riêng.
+# Việc này đã gây mất data thật 2 lần (khi push data/manual_data.json và theo lịch 6h sáng).
+# Chỉ bật lại "schedule" + "push" bên dưới SAU KHI đã thêm đủ 4 secret (META_ACCESS_TOKEN,
+# META_AD_ACCOUNT_ID, TIKTOK_ACCESS_TOKEN, TIKTOK_ADVERTISER_ID) trong Settings → Secrets → Actions.
 on:
-  schedule:
-    # 23:00 UTC = 06:00 sáng giờ VN (UTC+7). Đổi giờ tại đây nếu muốn khung giờ khác.
-    - cron: "0 23 * * *"
-  workflow_dispatch: {}   # nút "Run workflow" thủ công trong tab Actions — dùng khi cần refresh ngay ("real-time")
-  push:
-    paths:
-      - "data/manual_data.json"   # tự build lại ngay khi Lox sửa + push file này (vd. cập nhật OOH actual)
+  workflow_dispatch: {}   # nút "Run workflow" thủ công trong tab Actions — CHỈ chạy khi bấm tay
+  # schedule:
+  #   - cron: "0 23 * * *"   # 23:00 UTC = 06:00 sáng giờ VN — TẠM TẮT, xem ghi chú phía trên
+  # push:
+  #   paths:
+  #     - "data/manual_data.json"   # TẠM TẮT — xem ghi chú phía trên
 
 permissions:
   contents: write   # cần quyền này để workflow tự commit lại docs/data.json
