@@ -79,7 +79,7 @@
     <div class="section-title"><span class="n">②</span> Budget Spending — Actual vs Plan</div>
     <div class="card">
       <table class="simple">
-        <thead><tr><th>Hoạt động / Kênh</th><th class="num">Plan (VND)</th><th class="num">Actual (VND)</th><th class="num">% Achieved</th><th>Nguồn</th></tr></thead>
+        <thead><tr><th>Hoạt động / Kênh</th><th class="num">Plan (VND)</th><th class="num">Actual (VND)</th><th class="num">% Achieved</th></tr></thead>
         <tbody id="budgetBody"></tbody>
       </table>
     </div>
@@ -113,17 +113,33 @@
     </div>
 
     <div class="tab-panel card" id="t2">
+      <div class="filter-bar" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; align-items:flex-end;">
+        <div><label style="font-size:10.5px; color:var(--ink-soft); font-weight:700; text-transform:uppercase; display:block; margin-bottom:3px;">Từ ngày</label><input type="date" id="dateFromT2" value="2026-07-01" style="border:1px solid var(--line); border-radius:8px; padding:6px 10px; font-size:12.5px;"></div>
+        <div><label style="font-size:10.5px; color:var(--ink-soft); font-weight:700; text-transform:uppercase; display:block; margin-bottom:3px;">Đến ngày</label><input type="date" id="dateToT2" value="2026-08-31" style="border:1px solid var(--line); border-radius:8px; padding:6px 10px; font-size:12.5px;"></div>
+        <div><label style="font-size:10.5px; color:var(--ink-soft); font-weight:700; text-transform:uppercase; display:block; margin-bottom:3px;">Kênh (Type)</label>
+          <div id="buzzChannelFilters" style="display:flex; gap:10px; align-items:center; height:32px; flex-wrap:wrap;"></div>
+        </div>
+        <button id="clearFiltersT2" style="border:none; background:transparent; color:var(--blue); font-size:11.5px; font-weight:700; cursor:pointer; padding:6px 4px;">Xoá filter</button>
+      </div>
+
       <div class="highlight-grid" style="grid-template-columns:repeat(2,1fr); max-width:560px;" id="buzzHighlight"></div>
       <div class="subhead">% phân bổ theo kênh</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
         <div class="chart-box"><canvas id="buzzPie"></canvas></div>
         <div class="chart-box"><canvas id="engPie"></canvas></div>
       </div>
+
+      <div class="subhead">Social buzz theo ngày, theo loại</div>
+      <div class="chart-box tall"><canvas id="buzzByTypeChart"></canvas></div>
+
+      <div class="subhead">Social buzz theo ngày, phân theo kênh</div>
+      <div class="chart-box tall"><canvas id="buzzByChannelChart"></canvas></div>
+
       <div class="subhead">Chi tiết theo kênh</div>
       <table class="simple"><thead><tr><th>Kênh</th><th class="num">Post</th><th class="num">Comment</th><th class="num">Share</th><th class="num">Repost</th><th class="num">React</th><th class="num">Save</th><th class="num">Buzz</th><th class="num">Engagement</th></tr></thead>
         <tbody id="buzzBody"></tbody></table>
-      <div class="subhead">Top 5 posts</div>
-      <table class="simple"><thead><tr><th>Ngày</th><th>Title</th><th>Platform</th><th class="num">Buzz</th><th class="num">Engagement</th></tr></thead>
+      <div class="subhead">Top performing posts</div>
+      <table class="simple"><thead><tr><th>Ngày</th><th>Title</th><th>Platform</th><th>Type</th><th class="num">Buzz</th><th class="num">Engagement</th></tr></thead>
         <tbody id="topPostsBody"></tbody></table>
     </div>
 
@@ -249,28 +265,18 @@ function render(data) {
     if (item.name === 'Media — Tiktok ads') { actual = tkOk ? tkSpendUSD*FX_USD_VND : null; badge = tkOk ? '<span class="badge live">AUTO</span>' : '<span class="badge blocked">N/A</span>'; }
     if (item.includeInTotal) { totalPlan += item.plan; totalActual += (actual||0); }
     const p = actual!==null ? pct(actual, item.plan) : null;
-    return `<tr><td>${item.name}</td><td class="num">${fmt(item.plan)}</td><td class="num">${actual===null?'—':fmt(actual)}</td><td class="num">${p===null?'—':fmt2(p)+'%'}</td><td>${badge} ${item.source}</td></tr>`;
+    return `<tr><td>${item.name}</td><td class="num">${fmt(item.plan)}</td><td class="num">${actual===null?'—':fmt(actual)}</td><td class="num">${p===null?'—':fmt2(p)+'%'}</td></tr>`;
   }).join('');
   const pTotal = pct(totalActual, totalPlan);
-  budgetBody.innerHTML = rowsHtml + `<tr class="total-row"><td>TỔNG (không gồm App install/DWL)</td><td class="num">${fmt(totalPlan)}</td><td class="num">${fmt(totalActual)}</td><td class="num">${fmt2(pTotal)}%</td><td></td></tr>`;
+  budgetBody.innerHTML = rowsHtml + `<tr class="total-row"><td>TỔNG (không gồm App install/DWL)</td><td class="num">${fmt(totalPlan)}</td><td class="num">${fmt(totalActual)}</td><td class="num">${fmt2(pTotal)}%</td></tr>`;
 
-  // ---- Buzz section ----
-  const bh = document.getElementById('buzzHighlight');
-  bh.innerHTML = `<div class="htile"><div class="hlabel">Social buzz <span class="badge snapshot">SNAPSHOT</span></div><div class="hvalue">${fmt(data.paidLink.totalBuzz)}</div><div class="htarget">Target: ${fmt(manual.kpiTargets.socialBuzz)}</div></div>
-    <div class="htile"><div class="hlabel">Social engagement <span class="badge snapshot">SNAPSHOT</span></div><div class="hvalue">${fmt(data.paidLink.totalEngagement)}</div><div class="htarget">Target: ${fmt(manual.kpiTargets.socialEngagement)}</div></div>`;
-
-  const buzzBody = document.getElementById('buzzBody');
-  buzzBody.innerHTML = data.paidLink.byChannel.map(c => `<tr><td>${c.name}</td><td class="num">${c.post}</td><td class="num">${c.comment}</td><td class="num">${c.share}</td><td class="num">${c.repost}</td><td class="num">${c.react}</td><td class="num">${c.save}</td><td class="num">${c.buzz}</td><td class="num">${c.engagement}</td></tr>`).join('');
-
-  const topBody = document.getElementById('topPostsBody');
-  topBody.innerHTML = data.paidLink.top5.map(p => `<tr><td>${p.date.split('-').reverse().join('/')}</td><td>${p.title}</td><td>${p.platform}</td><td class="num">${fmt(p.buzz)}</td><td class="num">${fmt(p.engagement)}</td></tr>`).join('');
-
-  const pieColors = ['#F5811F','#2563AA','#1B8A5A','#B8790A','#7A5AF8','#C23B3B'];
-  const labels = data.paidLink.byChannel.map(c=>c.name);
-  new Chart(document.getElementById('buzzPie'), { type:'doughnut', data:{ labels, datasets:[{ data: data.paidLink.byChannel.map(c=>c.buzz), backgroundColor: pieColors }] },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Social buzz theo kênh'} } } });
-  new Chart(document.getElementById('engPie'), { type:'doughnut', data:{ labels, datasets:[{ data: data.paidLink.byChannel.map(c=>c.engagement), backgroundColor: pieColors }] },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Social engagement theo kênh'} } } });
+  // ---- Buzz section (client-side filter theo thời gian + kênh/Type, dùng manual.paidLinkPosts) ----
+  window.__paidLinkPosts = manual.paidLinkPosts || [];
+  window.__manualForBuzz = manual;
+  window.__buzzChannelNames = Array.from(new Set(window.__paidLinkPosts.map(p => p.type || (p.platform + ' Owned')))).sort();
+  window.__filtersT2 = window.__filtersT2 || { from: '2026-07-01', to: '2026-08-31', channels: new Set(window.__buzzChannelNames) };
+  renderBuzzChannelFilterCheckboxes();
+  rerenderBuzzSection();
 
   // ---- Impression trend charts ----
   function dateRange(start,end){ const out=[]; let cur=new Date(start); const e=new Date(end); while(cur<=e){ out.push(cur.toISOString().slice(0,10)); cur.setDate(cur.getDate()+1);} return out; }
@@ -296,12 +302,117 @@ function render(data) {
     ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{ticks:{maxTicksLimit:12}}} } });
 }
 
+// ---------- Social buzz & Social engagement — filter thời gian + kênh (client-side) ----------
+function postBuzz(p) { return p.post + p.repost + p.comment + p.share; }
+function postEngagement(p) { return p.repost + p.comment + p.share + p.react + p.save; }
+function postChannel(p) { return p.type || (p.platform + ' Owned'); }
+
+function renderBuzzChannelFilterCheckboxes() {
+  const container = document.getElementById('buzzChannelFilters');
+  if (container.dataset.rendered) return;
+  container.dataset.rendered = '1';
+  container.innerHTML = window.__buzzChannelNames.map(name =>
+    `<label style="display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;"><input type="checkbox" class="chBuzzCh" data-ch="${name}" checked> ${name}</label>`
+  ).join('');
+  document.querySelectorAll('.chBuzzCh').forEach(el => {
+    el.addEventListener('change', () => {
+      const ch = el.dataset.ch;
+      if (el.checked) window.__filtersT2.channels.add(ch); else window.__filtersT2.channels.delete(ch);
+      rerenderBuzzSection();
+    });
+  });
+}
+document.getElementById('dateFromT2').addEventListener('change', () => {
+  window.__filtersT2.from = document.getElementById('dateFromT2').value || '2026-07-01';
+  rerenderBuzzSection();
+});
+document.getElementById('dateToT2').addEventListener('change', () => {
+  window.__filtersT2.to = document.getElementById('dateToT2').value || '2026-08-31';
+  rerenderBuzzSection();
+});
+document.getElementById('clearFiltersT2').addEventListener('click', () => {
+  document.getElementById('dateFromT2').value = '2026-07-01';
+  document.getElementById('dateToT2').value = '2026-08-31';
+  window.__filtersT2.from = '2026-07-01'; window.__filtersT2.to = '2026-08-31';
+  window.__filtersT2.channels = new Set(window.__buzzChannelNames);
+  document.querySelectorAll('.chBuzzCh').forEach(el => el.checked = true);
+  rerenderBuzzSection();
+});
+
+let buzzPieInstance=null, engPieInstance=null, buzzByTypeChartInstance=null, buzzByChannelChartInstance=null;
+const BUZZ_TYPE_COLORS = { Post:'#F5811F', Comment:'#2563AA', Share:'#1B8A5A', Repost:'#B8790A' };
+const BUZZ_CH_PALETTE = ['#0D3B66','#F5811F','#1B8A5A','#B8790A','#7A5AF8','#C23B3B','#2563AA','#111111'];
+
+function rerenderBuzzSection() {
+  const f = window.__filtersT2;
+  const posts = window.__paidLinkPosts.filter(p => p.date >= f.from && p.date <= f.to && f.channels.has(postChannel(p)));
+
+  const totalBuzz = posts.reduce((s,p)=>s+postBuzz(p),0);
+  const totalEng = posts.reduce((s,p)=>s+postEngagement(p),0);
+  const kpi = window.__manualForBuzz.kpiTargets;
+  document.getElementById('buzzHighlight').innerHTML =
+    `<div class="htile"><div class="hlabel">Social buzz <span class="badge snapshot">SNAPSHOT</span></div><div class="hvalue">${fmt(totalBuzz)}</div><div class="htarget">Target: ${fmt(kpi.socialBuzz)} · ${fmt2(pct(totalBuzz,kpi.socialBuzz))}% target</div></div>
+     <div class="htile"><div class="hlabel">Social engagement <span class="badge snapshot">SNAPSHOT</span></div><div class="hvalue">${fmt(totalEng)}</div><div class="htarget">Target: ${fmt(kpi.socialEngagement)} · ${fmt2(pct(totalEng,kpi.socialEngagement))}% target</div></div>`;
+
+  const channels = window.__buzzChannelNames.filter(ch => f.channels.has(ch));
+  const byChannel = channels.map(name => {
+    const gp = posts.filter(p => postChannel(p) === name);
+    return { name,
+      post: gp.reduce((s,p)=>s+p.post,0), comment: gp.reduce((s,p)=>s+p.comment,0), share: gp.reduce((s,p)=>s+p.share,0),
+      repost: gp.reduce((s,p)=>s+p.repost,0), react: gp.reduce((s,p)=>s+p.react,0), save: gp.reduce((s,p)=>s+p.save,0),
+      buzz: gp.reduce((s,p)=>s+postBuzz(p),0), engagement: gp.reduce((s,p)=>s+postEngagement(p),0) };
+  });
+  document.getElementById('buzzBody').innerHTML = byChannel.map(c => `<tr><td>${c.name}</td><td class="num">${c.post}</td><td class="num">${c.comment}</td><td class="num">${c.share}</td><td class="num">${c.repost}</td><td class="num">${c.react}</td><td class="num">${c.save}</td><td class="num">${c.buzz}</td><td class="num">${c.engagement}</td></tr>`).join('');
+
+  const top20 = [...posts].sort((a,b)=>postBuzz(b)-postBuzz(a)).slice(0,20);
+  document.getElementById('topPostsBody').innerHTML = top20.map(p => `<tr><td>${p.date.split('-').reverse().join('/')}</td><td>${p.title}</td><td>${p.platform}</td><td>${postChannel(p)}</td><td class="num">${fmt(postBuzz(p))}</td><td class="num">${fmt(postEngagement(p))}</td></tr>`).join('') || '<tr><td colspan="6" style="color:var(--ink-soft)">Không có post khớp filter</td></tr>';
+
+  const pieColors = ['#F5811F','#2563AA','#1B8A5A','#B8790A','#7A5AF8','#C23B3B'];
+  if (buzzPieInstance) buzzPieInstance.destroy();
+  buzzPieInstance = new Chart(document.getElementById('buzzPie'), { type:'doughnut', data:{ labels: byChannel.map(c=>c.name), datasets:[{ data: byChannel.map(c=>c.buzz), backgroundColor: pieColors }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Social buzz theo kênh'} } } });
+  if (engPieInstance) engPieInstance.destroy();
+  engPieInstance = new Chart(document.getElementById('engPie'), { type:'doughnut', data:{ labels: byChannel.map(c=>c.name), datasets:[{ data: byChannel.map(c=>c.engagement), backgroundColor: pieColors }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'}, title:{display:true,text:'Social engagement theo kênh'} } } });
+
+  function dateRangeArr(start,end){ const out=[]; let cur=new Date(start); const e=new Date(end); while(cur<=e){ out.push(cur.toISOString().slice(0,10)); cur.setDate(cur.getDate()+1);} return out; }
+  const dates = dateRangeArr(f.from, f.to);
+
+  const types = ['Post','Comment','Share','Repost'];
+  const byDateByType = {};
+  posts.forEach(p => {
+    if (!byDateByType[p.date]) byDateByType[p.date] = { Post:0, Comment:0, Share:0, Repost:0 };
+    byDateByType[p.date].Post += p.post; byDateByType[p.date].Comment += p.comment;
+    byDateByType[p.date].Share += p.share; byDateByType[p.date].Repost += p.repost;
+  });
+  if (buzzByTypeChartInstance) buzzByTypeChartInstance.destroy();
+  buzzByTypeChartInstance = new Chart(document.getElementById('buzzByTypeChart'), {
+    type:'bar', data:{ labels: dates, datasets: types.map(t => ({ label:t, data: dates.map(d=>(byDateByType[d]?byDateByType[d][t]:0)), backgroundColor: BUZZ_TYPE_COLORS[t], stack:'s1' })) },
+    options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false}, plugins:{legend:{position:'top'}, tooltip:{callbacks:{label:(c)=>`${c.dataset.label}: ${fmt(c.raw)}`}}}, scales:{x:{stacked:true,ticks:{maxTicksLimit:12}}, y:{stacked:true,beginAtZero:true}} }
+  });
+
+  const byDateByChannel = {};
+  posts.forEach(p => {
+    const ch = postChannel(p);
+    if (!byDateByChannel[p.date]) byDateByChannel[p.date] = {};
+    byDateByChannel[p.date][ch] = (byDateByChannel[p.date][ch]||0) + postBuzz(p);
+  });
+  if (buzzByChannelChartInstance) buzzByChannelChartInstance.destroy();
+  buzzByChannelChartInstance = new Chart(document.getElementById('buzzByChannelChart'), {
+    type:'bar', data:{ labels: dates, datasets: channels.map((ch,i) => ({ label:ch, data: dates.map(d=>(byDateByChannel[d]&&byDateByChannel[d][ch])||0), backgroundColor: BUZZ_CH_PALETTE[i%BUZZ_CH_PALETTE.length], stack:'s1' })) },
+    options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false}, plugins:{legend:{position:'top'}, tooltip:{callbacks:{label:(c)=>`${c.dataset.label}: ${fmt(c.raw)}`}}}, scales:{x:{stacked:true,ticks:{maxTicksLimit:12}}, y:{stacked:true,beginAtZero:true}} }
+  });
+}
+
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
+    requestAnimationFrame(() => {
+      [buzzPieInstance, engPieInstance, buzzByTypeChartInstance, buzzByChannelChartInstance].forEach(c => { if (c) { c.resize(); c.update(); } });
+    });
   });
 });
 </script>
