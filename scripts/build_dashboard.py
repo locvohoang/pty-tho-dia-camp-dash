@@ -76,22 +76,24 @@ def compute_paid_link_totals(posts):
     total_buzz = sum(buzz(p) for p in posts)
     total_engagement = sum(engagement(p) for p in posts)
 
+    # Group theo field "type" thật trong data (Page Owned / Group community / ... — giá trị lấy
+    # trực tiếp từ cột Type của sheet Paid link, KHÔNG suy đoán từ platform hay định dạng nội dung).
     by_channel = {}
     for p in posts:
-        key = f'{p["platform"]} Owned'
+        key = p.get("type") or f'{p["platform"]} Owned'
         c = by_channel.setdefault(key, {"name": key, "post": 0, "comment": 0, "share": 0, "repost": 0, "react": 0, "save": 0, "buzz": 0, "engagement": 0})
         c["post"] += p["post"]; c["comment"] += p["comment"]; c["share"] += p["share"]
         c["repost"] += p["repost"]; c["react"] += p["react"]; c["save"] += p["save"]
         c["buzz"] += buzz(p); c["engagement"] += engagement(p)
 
-    top5 = sorted(posts, key=buzz, reverse=True)[:5]
-    top5_out = [{**p, "buzz": buzz(p), "engagement": engagement(p)} for p in top5]
+    top20 = sorted(posts, key=buzz, reverse=True)[:20]
+    top20_out = [{**p, "buzz": buzz(p), "engagement": engagement(p)} for p in top20]
 
     return {
         "totalBuzz": total_buzz,
         "totalEngagement": total_engagement,
         "byChannel": list(by_channel.values()),
-        "top5": top5_out,
+        "top20": top20_out,
     }
 
 
