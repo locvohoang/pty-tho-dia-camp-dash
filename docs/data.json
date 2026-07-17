@@ -10,12 +10,34 @@
       "ta": "Millennials/Young couple 27–35, HCM"
     },
     "kpiTargets": {
-      "socialBuzz": 25700,
+      "socialBuzz": 25699,
       "socialEngagement": 180833,
       "awarenessCoverage": 58,
       "dwl": 118,
       "appInstall": 20200
     },
+    "weeklyBuzzTarget": [
+      { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 1242 },
+      { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 1931 },
+      { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 2711 },
+      { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 4017 },
+      { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 6588 },
+      { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 3595 },
+      { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 2586 },
+      { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 1665 },
+      { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 1364 }
+    ],
+    "weeklyEngagementTarget": [
+      { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 6800 },
+      { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 11030 },
+      { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 19268 },
+      { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 28818 },
+      { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 46676 },
+      { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 20932 },
+      { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 17801 },
+      { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 16533 },
+      { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 12975 }
+    ],
     "rfTarget": {
       "impression": 12000000,
       "reach": 1200000
