@@ -55,7 +55,7 @@
     { "name": "DWL", "plan": 346500000, "actual": 0, "source": "Manual — Lox tự cập nhật", "includeInTotal": false }
   ],
 
-  "oohPlan": { "L1": 10, "L2": 10, "L3": 35 },
+  "oohPlan": { "L1": 9, "L2": 11, "L3": 35 },
   "oohActual": { "L1": 0, "L2": 2, "L3": 0 },
 
   "paidLinkPosts": [
