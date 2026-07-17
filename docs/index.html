@@ -129,11 +129,22 @@
         <div class="chart-box"><canvas id="engPie"></canvas></div>
       </div>
 
-      <div class="subhead">Social buzz theo ngày, theo loại</div>
-      <div class="chart-box tall"><canvas id="buzzByTypeChart"></canvas></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;">
+        <div>
+          <div class="subhead" style="margin-top:0;">Social buzz theo ngày, theo loại (01/07 – 31/08/2026)</div>
+          <div class="chart-box tall"><canvas id="buzzByTypeChart"></canvas></div>
 
-      <div class="subhead">Social buzz theo ngày, phân theo kênh</div>
-      <div class="chart-box tall"><canvas id="buzzByChannelChart"></canvas></div>
+          <div class="subhead">Social buzz theo ngày, phân theo kênh (01/07 – 31/08/2026)</div>
+          <div class="chart-box tall"><canvas id="buzzByChannelChart"></canvas></div>
+        </div>
+        <div>
+          <div class="subhead" style="margin-top:0;">Social engagement theo ngày, theo loại (01/07 – 31/08/2026)</div>
+          <div class="chart-box tall"><canvas id="engByTypeChart"></canvas></div>
+
+          <div class="subhead">Social engagement theo ngày, phân theo kênh (01/07 – 31/08/2026)</div>
+          <div class="chart-box tall"><canvas id="engByChannelChart"></canvas></div>
+        </div>
+      </div>
 
       <div class="subhead">Chi tiết theo kênh</div>
       <table class="simple"><thead><tr><th>Kênh</th><th class="num">Post</th><th class="num">Comment</th><th class="num">Share</th><th class="num">Repost</th><th class="num">React</th><th class="num">Save</th><th class="num">Buzz</th><th class="num">Engagement</th></tr></thead>
@@ -339,8 +350,9 @@ document.getElementById('clearFiltersT2').addEventListener('click', () => {
   rerenderBuzzSection();
 });
 
-let buzzPieInstance=null, engPieInstance=null, buzzByTypeChartInstance=null, buzzByChannelChartInstance=null;
+let buzzPieInstance=null, engPieInstance=null, buzzByTypeChartInstance=null, buzzByChannelChartInstance=null, engByTypeChartInstance=null, engByChannelChartInstance=null;
 const BUZZ_TYPE_COLORS = { Post:'#F5811F', Comment:'#2563AA', Share:'#1B8A5A', Repost:'#B8790A' };
+const ENG_TYPE_COLORS = { Repost:'#B8790A', Comment:'#2563AA', Share:'#1B8A5A', React:'#F5811F', Save:'#7A5AF8' };
 const BUZZ_CH_PALETTE = ['#0D3B66','#F5811F','#1B8A5A','#B8790A','#7A5AF8','#C23B3B','#2563AA','#111111'];
 
 function rerenderBuzzSection() {
@@ -402,6 +414,31 @@ function rerenderBuzzSection() {
     type:'bar', data:{ labels: dates, datasets: channels.map((ch,i) => ({ label:ch, data: dates.map(d=>(byDateByChannel[d]&&byDateByChannel[d][ch])||0), backgroundColor: BUZZ_CH_PALETTE[i%BUZZ_CH_PALETTE.length], stack:'s1' })) },
     options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false}, plugins:{legend:{position:'top'}, tooltip:{callbacks:{label:(c)=>`${c.dataset.label}: ${fmt(c.raw)}`}}}, scales:{x:{stacked:true,ticks:{maxTicksLimit:12}}, y:{stacked:true,beginAtZero:true}} }
   });
+
+  const engTypes = ['Repost','Comment','Share','React','Save'];
+  const byDateByTypeEng = {};
+  posts.forEach(p => {
+    if (!byDateByTypeEng[p.date]) byDateByTypeEng[p.date] = { Repost:0, Comment:0, Share:0, React:0, Save:0 };
+    byDateByTypeEng[p.date].Repost += p.repost; byDateByTypeEng[p.date].Comment += p.comment;
+    byDateByTypeEng[p.date].Share += p.share; byDateByTypeEng[p.date].React += p.react; byDateByTypeEng[p.date].Save += p.save;
+  });
+  if (engByTypeChartInstance) engByTypeChartInstance.destroy();
+  engByTypeChartInstance = new Chart(document.getElementById('engByTypeChart'), {
+    type:'bar', data:{ labels: dates, datasets: engTypes.map(t => ({ label:t, data: dates.map(d=>(byDateByTypeEng[d]?byDateByTypeEng[d][t]:0)), backgroundColor: ENG_TYPE_COLORS[t], stack:'s1' })) },
+    options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false}, plugins:{legend:{position:'top'}, tooltip:{callbacks:{label:(c)=>`${c.dataset.label}: ${fmt(c.raw)}`}}}, scales:{x:{stacked:true,ticks:{maxTicksLimit:12}}, y:{stacked:true,beginAtZero:true}} }
+  });
+
+  const byDateByChannelEng = {};
+  posts.forEach(p => {
+    const ch = postChannel(p);
+    if (!byDateByChannelEng[p.date]) byDateByChannelEng[p.date] = {};
+    byDateByChannelEng[p.date][ch] = (byDateByChannelEng[p.date][ch]||0) + postEngagement(p);
+  });
+  if (engByChannelChartInstance) engByChannelChartInstance.destroy();
+  engByChannelChartInstance = new Chart(document.getElementById('engByChannelChart'), {
+    type:'bar', data:{ labels: dates, datasets: channels.map((ch,i) => ({ label:ch, data: dates.map(d=>(byDateByChannelEng[d]&&byDateByChannelEng[d][ch])||0), backgroundColor: BUZZ_CH_PALETTE[i%BUZZ_CH_PALETTE.length], stack:'s1' })) },
+    options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false}, plugins:{legend:{position:'top'}, tooltip:{callbacks:{label:(c)=>`${c.dataset.label}: ${fmt(c.raw)}`}}}, scales:{x:{stacked:true,ticks:{maxTicksLimit:12}}, y:{stacked:true,beginAtZero:true}} }
+  });
 }
 
 document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -411,7 +448,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
     requestAnimationFrame(() => {
-      [buzzPieInstance, engPieInstance, buzzByTypeChartInstance, buzzByChannelChartInstance].forEach(c => { if (c) { c.resize(); c.update(); } });
+      [buzzPieInstance, engPieInstance, buzzByTypeChartInstance, buzzByChannelChartInstance, engByTypeChartInstance, engByChannelChartInstance].forEach(c => { if (c) { c.resize(); c.update(); } });
     });
   });
 });
