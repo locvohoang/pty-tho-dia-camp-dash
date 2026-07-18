@@ -124,13 +124,7 @@
 
       <div class="highlight-grid" style="grid-template-columns:repeat(2,1fr); max-width:560px;" id="buzzHighlight"></div>
 
-      <div class="subhead" style="margin-top:0;">Social buzz theo ngày vs Target theo tuần (29/06 – 30/08/2026)</div>
-      <div class="chart-box tall"><canvas id="buzzTrendChart"></canvas></div>
-
-      <div class="subhead">Social engagement theo ngày vs Target theo tuần (29/06 – 30/08/2026)</div>
-      <div class="chart-box tall"><canvas id="engagementTrendChart"></canvas></div>
-
-      <div class="subhead">% phân bổ theo kênh</div>
+      <div class="subhead" style="margin-top:0;">% phân bổ theo kênh</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
         <div class="chart-box"><canvas id="buzzPie"></canvas></div>
         <div class="chart-box"><canvas id="engPie"></canvas></div>
@@ -186,8 +180,9 @@ function cumulativeTargetToDate(weeklyArr, asOfDate) {
   });
   return sum;
 }
-function trackTileHtml(weeklyArr, actualValue) {
+function trackTileHtml(weeklyArr, actualValue, unitLabel) {
   if (!weeklyArr || !weeklyArr.length) return '';
+  if (actualValue === null || actualValue === undefined) return '';
   const todayStr = new Date().toISOString().slice(0,10);
   const campStart = weeklyArr[0].start, campEnd = weeklyArr[weeklyArr.length-1].end;
   if (todayStr < campStart) return `<div class="status-line">Chưa bắt đầu campaign (từ ${campStart})</div>`;
@@ -197,9 +192,10 @@ function trackTileHtml(weeklyArr, actualValue) {
   const trackBadge = onTrackPct !== null && onTrackPct >= 100
     ? '<span class="badge live">ON TRACK</span>'
     : '<span class="badge blocked">OFF TRACK</span>';
+  const unitTxt = unitLabel ? ` (${unitLabel})` : '';
   return `
-    <div class="status-line" style="margin-top:6px;">${trackBadge} ${onTrackPct!==null?fmt2(onTrackPct)+'% so với kế hoạch lũy kế':''}</div>
-    <div class="status-line">Kế hoạch lũy kế đến nay: ${fmt(cumTarget)} · ${gap>0?`Còn thiếu ${fmt(gap)}`:`Vượt kế hoạch ${fmt(-gap)}`}</div>
+    <div class="status-line" style="margin-top:6px;">${trackBadge} ${onTrackPct!==null?fmt2(onTrackPct)+'% so với kế hoạch lũy kế'+unitTxt:''}</div>
+    <div class="status-line">Kế hoạch lũy kế đến nay${unitTxt}: ${fmt(cumTarget)} · ${gap>0?`Còn thiếu ${fmt(gap)}`:`Vượt kế hoạch ${fmt(-gap)}`}</div>
   `;
 }
 function statusDot(active,label){ const c = active ? '#1B8A5A' : '#C23B3B'; return `<span title="${label||''}" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c};margin-right:6px;"></span>`; }
@@ -288,11 +284,13 @@ function render(data) {
       <div class="value">${rfReach!==null?fmt(rfReach):'—'}</div>
       <div class="target">Target: ${fmt(manual.rfTarget.reach)} · Impression: ${rfImp!==null?fmt(rfImp):'—'} / ${fmt(manual.rfTarget.impression)}</div>
       ${pReach!==null?`<div class="progress-track"><div class="progress-fill ${pctClass(pReach)}" style="width:${Math.min(pReach,100)}%"></div></div><span class="pct-tag">${fmt2(pReach)}% target</span>`:''}
+      ${trackTileHtml(manual.weeklyRfImpressionTarget, rfImp, 'Impression')}
     </div>
     <div class="kpi"><div class="label">No. of OOH <span class="badge dummy">MANUAL</span></div>
       <div class="value">${oohTotal} <span style="font-size:13px;color:var(--ink-soft);">/ ${oohPlanTotal}</span></div>
       <div class="progress-track"><div class="progress-fill ${pctClass(pOOH)}" style="width:${Math.min(pOOH,100)}%"></div></div><span class="pct-tag">${fmt2(pOOH)}% target</span>
       <div class="target">L1 ${manual.oohActual.L1}/${manual.oohPlan.L1} · L2 ${manual.oohActual.L2}/${manual.oohPlan.L2} · L3 ${manual.oohActual.L3}/${manual.oohPlan.L3}</div>
+      ${trackTileHtml(manual.weeklyOohTarget, oohTotal, 'slot')}
     </div>
     <div class="kpi"><div class="label">Social buzz <span class="badge snapshot">SNAPSHOT</span></div><div class="value">${fmt(data.paidLink.totalBuzz)}</div>
       <div class="target">Target: ${fmt(manual.kpiTargets.socialBuzz)} · ${fmt2(pBuzz)}% target</div>${trackTileHtml(manual.weeklyBuzzTarget, data.paidLink.totalBuzz)}</div>
@@ -349,33 +347,6 @@ function render(data) {
       {label:'Target/ngày (TB tuần)', data:tkTargetSeries, borderColor:'#5B6472', borderDash:[6,4], fill:false, stepped:true, pointRadius:0},
     ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{ticks:{maxTicksLimit:12}}} } });
 
-  // ---- Social buzz / Social engagement theo ngày (TẤT CẢ post, không phụ thuộc filter tab) vs Target theo tuần ----
-  if (manual.weeklyBuzzTarget && manual.weeklyEngagementTarget) {
-    const allPosts = manual.paidLinkPosts || [];
-    function trendRange(weeklyArr){ return dateRange(weeklyArr[0].start, weeklyArr[weeklyArr.length-1].end); }
-
-    const buzzDates = trendRange(manual.weeklyBuzzTarget);
-    const buzzByDate = {};
-    allPosts.forEach(p => { buzzByDate[p.date] = (buzzByDate[p.date]||0) + postBuzz(p); });
-    const buzzActualSeries = buzzDates.map(d => buzzByDate[d] !== undefined ? buzzByDate[d] : null);
-    const buzzTargetSeries = buzzDates.map(d => { const wk = manual.weeklyBuzzTarget.find(w=>d>=w.start&&d<=w.end); return wk ? Math.round(wk.target/7) : null; });
-    if (buzzTrendChartInstance) buzzTrendChartInstance.destroy();
-    buzzTrendChartInstance = new Chart(document.getElementById('buzzTrendChart'), { type:'line', data:{ labels:buzzDates, datasets:[
-        {label:'Social buzz thực tế / ngày', data:buzzActualSeries, borderColor:'#F5811F', backgroundColor:'rgba(245,129,31,0.12)', fill:true, spanGaps:true, tension:0.2, pointRadius:2},
-        {label:'Target/ngày (TB tuần, tất cả kênh)', data:buzzTargetSeries, borderColor:'#5B6472', borderDash:[6,4], fill:false, stepped:true, pointRadius:0},
-      ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{ticks:{maxTicksLimit:12}}} } });
-
-    const engDates = trendRange(manual.weeklyEngagementTarget);
-    const engByDate = {};
-    allPosts.forEach(p => { engByDate[p.date] = (engByDate[p.date]||0) + postEngagement(p); });
-    const engActualSeries = engDates.map(d => engByDate[d] !== undefined ? engByDate[d] : null);
-    const engTargetSeries = engDates.map(d => { const wk = manual.weeklyEngagementTarget.find(w=>d>=w.start&&d<=w.end); return wk ? Math.round(wk.target/7) : null; });
-    if (engagementTrendChartInstance) engagementTrendChartInstance.destroy();
-    engagementTrendChartInstance = new Chart(document.getElementById('engagementTrendChart'), { type:'line', data:{ labels:engDates, datasets:[
-        {label:'Social engagement thực tế / ngày', data:engActualSeries, borderColor:'#1B8A5A', backgroundColor:'rgba(27,138,90,0.12)', fill:true, spanGaps:true, tension:0.2, pointRadius:2},
-        {label:'Target/ngày (TB tuần, tất cả kênh)', data:engTargetSeries, borderColor:'#5B6472', borderDash:[6,4], fill:false, stepped:true, pointRadius:0},
-      ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{ticks:{maxTicksLimit:12}}} } });
-  }
 }
 
 // ---------- Social buzz & Social engagement — filter thời gian + kênh (client-side) ----------
@@ -415,7 +386,7 @@ document.getElementById('clearFiltersT2').addEventListener('click', () => {
   rerenderBuzzSection();
 });
 
-let buzzPieInstance=null, engPieInstance=null, buzzByTypeChartInstance=null, buzzByChannelChartInstance=null, engByTypeChartInstance=null, engByChannelChartInstance=null, buzzTrendChartInstance=null, engagementTrendChartInstance=null;
+let buzzPieInstance=null, engPieInstance=null, buzzByTypeChartInstance=null, buzzByChannelChartInstance=null, engByTypeChartInstance=null, engByChannelChartInstance=null;
 const BUZZ_TYPE_COLORS = { Post:'#F5811F', Comment:'#2563AA', Share:'#1B8A5A', Repost:'#B8790A' };
 const ENG_TYPE_COLORS = { Repost:'#B8790A', Comment:'#2563AA', Share:'#1B8A5A', React:'#F5811F', Save:'#7A5AF8' };
 const BUZZ_CH_PALETTE = ['#0D3B66','#F5811F','#1B8A5A','#B8790A','#7A5AF8','#C23B3B','#2563AA','#111111'];
@@ -513,7 +484,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
     requestAnimationFrame(() => {
-      [buzzPieInstance, engPieInstance, buzzByTypeChartInstance, buzzByChannelChartInstance, engByTypeChartInstance, engByChannelChartInstance, buzzTrendChartInstance, engagementTrendChartInstance].forEach(c => { if (c) { c.resize(); c.update(); } });
+      [buzzPieInstance, engPieInstance, buzzByTypeChartInstance, buzzByChannelChartInstance, engByTypeChartInstance, engByChannelChartInstance].forEach(c => { if (c) { c.resize(); c.update(); } });
     });
   });
 });

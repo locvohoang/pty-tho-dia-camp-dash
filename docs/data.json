@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T06:34:47Z",
+  "generatedAt": "2026-07-16T07:31:46.293239Z",
   "campaignStart": "2026-07-01",
   "campaignEnd": "2026-08-31",
   "manual": {
@@ -10,16 +10,60 @@
       "ta": "Millennials/Young couple 27–35, HCM"
     },
     "kpiTargets": {
-      "socialBuzz": 25700,
+      "socialBuzz": 25699,
       "socialEngagement": 180833,
       "awarenessCoverage": 58,
       "dwl": 118,
       "appInstall": 20200
     },
+    "weeklyBuzzTarget": [
+      { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 1242 },
+      { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 1931 },
+      { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 2711 },
+      { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 4017 },
+      { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 6588 },
+      { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 3595 },
+      { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 2586 },
+      { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 1665 },
+      { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 1364 }
+    ],
+    "weeklyEngagementTarget": [
+      { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 6800 },
+      { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 11030 },
+      { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 19268 },
+      { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 28818 },
+      { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 46676 },
+      { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 20932 },
+      { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 17801 },
+      { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 16533 },
+      { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 12975 }
+    ],
     "rfTarget": {
       "impression": 12000000,
       "reach": 1200000
     },
+    "weeklyRfImpressionTarget": [
+      { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 720000 },
+      { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 1200000 },
+      { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 1152000 },
+      { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 1728000 },
+      { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 2880000 },
+      { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 864000 },
+      { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 1080000 },
+      { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 1296000 },
+      { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 1080000 }
+    ],
+    "weeklyOohTarget": [
+      { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 0 },
+      { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 0 },
+      { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 18.333333333333332 },
+      { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 18.333333333333332 },
+      { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 18.333333333333332 },
+      { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 0 },
+      { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 0 },
+      { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 0 },
+      { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 0 }
+    ],
     "awarenessTarget": {
       "impression": 20720000,
       "reach": 3180000,
@@ -218,8 +262,8 @@
       }
     ],
     "oohPlan": {
-      "L1": 10,
-      "L2": 10,
+      "L1": 9,
+      "L2": 11,
       "L3": 35
     },
     "oohActual": {
@@ -230,8 +274,10 @@
     "paidLinkPosts": [
       {
         "date": "2026-07-04",
-        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống (Single)",
+        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống",
+        "links": "Video",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 7,
@@ -242,8 +288,10 @@
       },
       {
         "date": "2026-07-04",
-        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống (Video)",
+        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống",
+        "links": "Video",
         "platform": "Tiktok",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 1,
@@ -255,7 +303,9 @@
       {
         "date": "2026-07-07",
         "title": "Có thể bạn chưa biết — khoảng cách nhà đến chỗ làm",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 0,
@@ -267,7 +317,9 @@
       {
         "date": "2026-07-07",
         "title": "Ngoài chi phí mua nhà, những điều người sắp mua nhà phải biết sớm",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 0,
@@ -279,7 +331,9 @@
       {
         "date": "2026-07-07",
         "title": "Điền vào chỗ trống: 'Ước gì lúc mua nhà mình đã biết...'",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 3,
@@ -291,7 +345,9 @@
       {
         "date": "2026-07-07",
         "title": "Người mua nhà hay hối hận nhất ở tháng thứ mấy?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 39,
@@ -302,8 +358,10 @@
       },
       {
         "date": "2026-07-09",
-        "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì? (Single)",
+        "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 19,
@@ -314,8 +372,10 @@
       },
       {
         "date": "2026-07-09",
-        "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì? (Video)",
+        "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì?",
+        "links": "Video",
         "platform": "Tiktok",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 4,
@@ -327,7 +387,9 @@
       {
         "date": "2026-07-09",
         "title": "Nếu phải chọn: nhà đẹp chưa rõ khu vực, hay nhà thường nhưng biết rõ khu?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 0,
@@ -339,7 +401,9 @@
       {
         "date": "2026-07-09",
         "title": "Nếu ai đó nói 3–5 tỷ ở Sài Gòn hết cửa chọn nhà tốt — họ đang nhìn sai chỗ",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 428,
@@ -351,7 +415,9 @@
       {
         "date": "2026-07-10",
         "title": "Đố bạn có bao nhiêu khoản chi phí phát sinh sau khi mua nhà?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 33,
@@ -363,7 +429,9 @@
       {
         "date": "2026-07-10",
         "title": "Trên giấy tờ bạn biết đủ hết, nhưng có những thứ không ai viết trên giấy",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 2,
@@ -375,7 +443,9 @@
       {
         "date": "2026-07-10",
         "title": "Cặp vợ chồng trẻ mua nhà: thích sầm uất vs thích yên tĩnh — ai thắng?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 11,
@@ -385,9 +455,25 @@
         "view": 0
       },
       {
+        "date": "2026-07-10",
+        "title": "Nếu ai đó nói 3–5 tỷ ở Sài Gòn hết cửa chọn nhà tốt — họ đang nhìn sai chỗ (repost)",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Group community",
+        "post": 1,
+        "repost": 0,
+        "comment": 120,
+        "share": 4,
+        "react": 99,
+        "save": 0,
+        "view": 0
+      },
+      {
         "date": "2026-07-11",
         "title": "Cùng 1 cục tiền mua nhà nên chọn náo nhiệt gần trung tâm hay yên tĩnh không gian rộng",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 241,
@@ -399,7 +485,9 @@
       {
         "date": "2026-07-11",
         "title": "Nếu có người sống 10 năm ở khu bạn cân nhắc mua nhà kể thật — bạn hỏi gì đầu tiên?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 27,
@@ -411,7 +499,9 @@
       {
         "date": "2026-07-11",
         "title": "Có khu đang bị đồn là 'Thành phố đêm' (Q.12 cúp điện nguyên ngày) — đoán xem khu nào?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 58,
@@ -423,7 +513,9 @@
       {
         "date": "2026-07-11",
         "title": "[ThoDia][B2C] Nhà vùng ven không thua gì trung tâm",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 17,
@@ -435,7 +527,9 @@
       {
         "date": "2026-07-13",
         "title": "[ThoDia][B2C] Main KV",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 1,
@@ -443,6 +537,20 @@
         "react": 462,
         "save": 0,
         "view": 0
+      },
+      {
+        "date": "2026-07-15",
+        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống",
+        "links": "Video",
+        "platform": "Youtube",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 0,
+        "share": 0,
+        "react": 1,
+        "save": 0,
+        "view": 516
       }
     ]
   },
@@ -453,363 +561,50 @@
         {
           "campaign_id": "120251328719970319",
           "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "impressions": 71270,
-          "reach": 32396,
-          "spend_sgd": 75.09
+          "impressions": 34901,
+          "reach": 20249,
+          "spend_sgd": 36.73
         },
         {
           "campaign_id": "120251321695200319",
           "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "impressions": 629520,
-          "reach": 399321,
-          "spend_sgd": 333.11
+          "impressions": 337555,
+          "reach": 262305,
+          "spend_sgd": 178.44
         },
         {
           "campaign_id": "120251321467150319",
           "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "impressions": 15265,
-          "reach": 10978,
-          "spend_sgd": 72.94
+          "impressions": 4488,
+          "reach": 3580,
+          "spend_sgd": 39.37
         },
         {
           "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "impressions": 316240,
-          "reach": 122279,
-          "spend_sgd": 386.54
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_0726_0826",
+          "impressions": 200941,
+          "reach": 90561,
+          "spend_sgd": 247.7
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "impressions": 900250,
-          "reach": 490762,
-          "spend_sgd": 973.43
+          "impressions": 850653,
+          "reach": 482903,
+          "spend_sgd": 896.67
         }
       ]
     },
     "daily": {
-      "available": true,
-      "data": [
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-18",
-          "impressions": 10345,
-          "reach": 8397,
-          "spend_sgd": 10.19
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-16",
-          "impressions": 18089,
-          "reach": 12879,
-          "spend_sgd": 19.19
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-14",
-          "impressions": 7144,
-          "reach": 5581,
-          "spend_sgd": 7.62
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-17",
-          "impressions": 18746,
-          "reach": 13480,
-          "spend_sgd": 20.1
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-15",
-          "impressions": 16946,
-          "reach": 12050,
-          "spend_sgd": 17.99
-        },
-        {
-          "campaign_id": "120251321695200319",
-          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-18",
-          "impressions": 67419,
-          "reach": 55464,
-          "spend_sgd": 35.58
-        },
-        {
-          "campaign_id": "120251321695200319",
-          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-14",
-          "impressions": 140526,
-          "reach": 117436,
-          "spend_sgd": 73.98
-        },
-        {
-          "campaign_id": "120251321695200319",
-          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-15",
-          "impressions": 132676,
-          "reach": 114000,
-          "spend_sgd": 70.44
-        },
-        {
-          "campaign_id": "120251321695200319",
-          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-17",
-          "impressions": 149333,
-          "reach": 121548,
-          "spend_sgd": 79.39
-        },
-        {
-          "campaign_id": "120251321695200319",
-          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-16",
-          "impressions": 139566,
-          "reach": 113593,
-          "spend_sgd": 73.72
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-18",
-          "impressions": 4137,
-          "reach": 3729,
-          "spend_sgd": 8.39
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-17",
-          "impressions": 5269,
-          "reach": 4410,
-          "spend_sgd": 17.69
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-16",
-          "impressions": 2946,
-          "reach": 2610,
-          "spend_sgd": 17.59
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-15",
-          "impressions": 1674,
-          "reach": 1390,
-          "spend_sgd": 17.83
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-14",
-          "impressions": 1239,
-          "reach": 1100,
-          "spend_sgd": 11.44
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-17",
-          "impressions": 63105,
-          "reach": 43090,
-          "spend_sgd": 72.87
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-14",
-          "impressions": 81290,
-          "reach": 49698,
-          "spend_sgd": 101.78
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-16",
-          "impressions": 51922,
-          "reach": 35420,
-          "spend_sgd": 70.44
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-18",
-          "impressions": 33076,
-          "reach": 25890,
-          "spend_sgd": 42.47
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-15",
-          "impressions": 50184,
-          "reach": 34182,
-          "spend_sgd": 58.36
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-13",
-          "impressions": 36663,
-          "reach": 22718,
-          "spend_sgd": 40.62
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-01",
-          "impressions": 51468,
-          "reach": 48705,
-          "spend_sgd": 39.05
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-11",
-          "impressions": 69781,
-          "reach": 49403,
-          "spend_sgd": 73.39
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-17",
-          "impressions": 24337,
-          "reach": 19515,
-          "spend_sgd": 38.46
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-16",
-          "impressions": 27712,
-          "reach": 22259,
-          "spend_sgd": 42.54
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-15",
-          "impressions": 21309,
-          "reach": 17213,
-          "spend_sgd": 36.48
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-14",
-          "impressions": 25223,
-          "reach": 20099,
-          "spend_sgd": 39.1
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-13",
-          "impressions": 35340,
-          "reach": 26003,
-          "spend_sgd": 54.05
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-12",
-          "impressions": 55137,
-          "reach": 39804,
-          "spend_sgd": 67.99
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-10",
-          "impressions": 75915,
-          "reach": 54333,
-          "spend_sgd": 85.55
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-02",
-          "impressions": 47968,
-          "reach": 42811,
-          "spend_sgd": 39.0
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-09",
-          "impressions": 53637,
-          "reach": 43464,
-          "spend_sgd": 54.15
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-08",
-          "impressions": 48819,
-          "reach": 44243,
-          "spend_sgd": 66.51
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-07",
-          "impressions": 49706,
-          "reach": 45608,
-          "spend_sgd": 68.15
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-06",
-          "impressions": 60517,
-          "reach": 52355,
-          "spend_sgd": 64.01
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-05",
-          "impressions": 76512,
-          "reach": 62782,
-          "spend_sgd": 65.08
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-04",
-          "impressions": 118569,
-          "reach": 108458,
-          "spend_sgd": 88.88
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-03",
-          "impressions": 47800,
-          "reach": 43910,
-          "spend_sgd": 33.94
-        },
-        {
-          "campaign_id": "120250905291160319",
-          "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "date_start": "2026-07-18",
-          "impressions": 10500,
-          "reach": 9298,
-          "spend_sgd": 17.1
-        }
-      ]
+      "available": false,
+      "error": "Chưa fetch daily trong lần build này"
     }
   },
   "tiktok": {
     "available": true,
     "data": [
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-07",
         "impressions": 33851,
@@ -817,7 +612,7 @@
         "spend_usd": 8.23
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-08",
         "impressions": 88916,
@@ -825,7 +620,7 @@
         "spend_usd": 20.56
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-09",
         "impressions": 81201,
@@ -833,7 +628,7 @@
         "spend_usd": 21.09
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-10",
         "impressions": 63897,
@@ -841,7 +636,7 @@
         "spend_usd": 15.64
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-11",
         "impressions": 95537,
@@ -849,7 +644,7 @@
         "spend_usd": 20.91
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-12",
         "impressions": 65369,
@@ -857,7 +652,7 @@
         "spend_usd": 13.42
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-13",
         "impressions": 713,
@@ -865,95 +660,81 @@
         "spend_usd": 0.11
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-14",
         "impressions": 2,
         "reach": 2,
-        "spend_usd": 0.0
+        "spend_usd": 0
       },
       {
-        "campaign_id": "1870679263978577",
-        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826",
+        "campaign_id": null,
+        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826.",
         "date": "2026-07-14",
         "impressions": 108,
         "reach": 108,
         "spend_usd": 0.04
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-15",
         "impressions": 0,
         "reach": 0,
-        "spend_usd": 0.0
+        "spend_usd": 0
       },
       {
-        "campaign_id": "1870679263978577",
-        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826",
+        "campaign_id": null,
+        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826.",
         "date": "2026-07-15",
         "impressions": 0,
         "reach": 0,
-        "spend_usd": 0.0
+        "spend_usd": 0
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_id": null,
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-16",
         "impressions": 0,
         "reach": 0,
-        "spend_usd": 0.0
-      },
-      {
-        "campaign_id": "1870679263978577",
-        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826",
-        "date": "2026-07-16",
-        "impressions": 0,
-        "reach": 0,
-        "spend_usd": 0.0
-      },
-      {
-        "campaign_id": "1870042810302466",
-        "campaign_name": "brand_reach_pty_thodiacamp_0726",
-        "date": "2026-07-17",
-        "impressions": 0,
-        "reach": 0,
-        "spend_usd": 0.0
+        "spend_usd": 0
       }
     ]
   },
   "paidLink": {
-    "totalBuzz": 1126,
-    "totalEngagement": 37839,
+    "totalBuzz": 1252,
+    "totalEngagement": 38063,
     "byChannel": [
       {
-        "name": "Facebook Owned",
-        "post": 16,
-        "comment": 886,
-        "share": 200,
+        "name": "Page Owned",
+        "post": 19,
+        "comment": 891,
+        "share": 217,
         "repost": 0,
-        "react": 36466,
-        "save": 0,
-        "buzz": 1102,
-        "engagement": 37552
+        "react": 36719,
+        "save": 13,
+        "buzz": 1127,
+        "engagement": 37840
       },
       {
-        "name": "Tiktok Owned",
-        "post": 2,
-        "comment": 5,
-        "share": 17,
+        "name": "Group community",
+        "post": 1,
+        "comment": 120,
+        "share": 4,
         "repost": 0,
-        "react": 252,
-        "save": 13,
-        "buzz": 24,
-        "engagement": 287
+        "react": 99,
+        "save": 0,
+        "buzz": 125,
+        "engagement": 223
       }
     ],
-    "top5": [
+    "top20": [
       {
         "date": "2026-07-09",
         "title": "Nếu ai đó nói 3–5 tỷ ở Sài Gòn hết cửa chọn nhà tốt — họ đang nhìn sai chỗ",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 428,
@@ -967,7 +748,9 @@
       {
         "date": "2026-07-11",
         "title": "Cùng 1 cục tiền mua nhà nên chọn náo nhiệt gần trung tâm hay yên tĩnh không gian rộng",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 241,
@@ -980,8 +763,26 @@
       },
       {
         "date": "2026-07-10",
-        "title": "Đố bạn có bao nhiêu khoản chi phí phát sinh sau khi mua nhà?",
+        "title": "Nếu ai đó nói 3–5 tỷ ở Sài Gòn hết cửa chọn nhà tốt — họ đang nhìn sai chỗ (repost)",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Group community",
+        "post": 1,
+        "repost": 0,
+        "comment": 120,
+        "share": 4,
+        "react": 99,
+        "save": 0,
+        "view": 0,
+        "buzz": 125,
+        "engagement": 223
+      },
+      {
+        "date": "2026-07-10",
+        "title": "Đố bạn có bao nhiêu khoản chi phí phát sinh sau khi mua nhà?",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 33,
@@ -995,7 +796,9 @@
       {
         "date": "2026-07-11",
         "title": "Có khu đang bị đồn là 'Thành phố đêm' (Q.12 cúp điện nguyên ngày) — đoán xem khu nào?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 58,
@@ -1009,7 +812,9 @@
       {
         "date": "2026-07-07",
         "title": "Người mua nhà hay hối hận nhất ở tháng thứ mấy?",
+        "links": "Single",
         "platform": "Facebook",
+        "type": "Page Owned",
         "post": 1,
         "repost": 0,
         "comment": 39,
@@ -1019,6 +824,230 @@
         "view": 0,
         "buzz": 62,
         "engagement": 4561
+      },
+      {
+        "date": "2026-07-09",
+        "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì?",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 19,
+        "share": 13,
+        "react": 482,
+        "save": 0,
+        "view": 0,
+        "buzz": 33,
+        "engagement": 514
+      },
+      {
+        "date": "2026-07-11",
+        "title": "Nếu có người sống 10 năm ở khu bạn cân nhắc mua nhà kể thật — bạn hỏi gì đầu tiên?",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 27,
+        "share": 5,
+        "react": 1600,
+        "save": 0,
+        "view": 0,
+        "buzz": 33,
+        "engagement": 1632
+      },
+      {
+        "date": "2026-07-04",
+        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống",
+        "links": "Video",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 7,
+        "share": 17,
+        "react": 485,
+        "save": 0,
+        "view": 0,
+        "buzz": 25,
+        "engagement": 509
+      },
+      {
+        "date": "2026-07-11",
+        "title": "[ThoDia][B2C] Nhà vùng ven không thua gì trung tâm",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 17,
+        "share": 4,
+        "react": 721,
+        "save": 0,
+        "view": 0,
+        "buzz": 22,
+        "engagement": 742
+      },
+      {
+        "date": "2026-07-09",
+        "title": "Người mua nhà lần đầu hối hận nhiều nhất về điều gì?",
+        "links": "Video",
+        "platform": "Tiktok",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 4,
+        "share": 8,
+        "react": 182,
+        "save": 6,
+        "view": 132000,
+        "buzz": 13,
+        "engagement": 200
+      },
+      {
+        "date": "2026-07-10",
+        "title": "Cặp vợ chồng trẻ mua nhà: thích sầm uất vs thích yên tĩnh — ai thắng?",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 11,
+        "share": 1,
+        "react": 732,
+        "save": 0,
+        "view": 0,
+        "buzz": 13,
+        "engagement": 744
+      },
+      {
+        "date": "2026-07-04",
+        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống",
+        "links": "Video",
+        "platform": "Tiktok",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 1,
+        "share": 9,
+        "react": 70,
+        "save": 7,
+        "view": 358000,
+        "buzz": 11,
+        "engagement": 87
+      },
+      {
+        "date": "2026-07-10",
+        "title": "Trên giấy tờ bạn biết đủ hết, nhưng có những thứ không ai viết trên giấy",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 2,
+        "share": 4,
+        "react": 757,
+        "save": 0,
+        "view": 0,
+        "buzz": 7,
+        "engagement": 763
+      },
+      {
+        "date": "2026-07-07",
+        "title": "Điền vào chỗ trống: 'Ước gì lúc mua nhà mình đã biết...'",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 3,
+        "share": 1,
+        "react": 15,
+        "save": 0,
+        "view": 0,
+        "buzz": 5,
+        "engagement": 19
+      },
+      {
+        "date": "2026-07-09",
+        "title": "Nếu phải chọn: nhà đẹp chưa rõ khu vực, hay nhà thường nhưng biết rõ khu?",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 0,
+        "share": 2,
+        "react": 298,
+        "save": 0,
+        "view": 0,
+        "buzz": 3,
+        "engagement": 300
+      },
+      {
+        "date": "2026-07-13",
+        "title": "[ThoDia][B2C] Main KV",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 1,
+        "share": 1,
+        "react": 462,
+        "save": 0,
+        "view": 0,
+        "buzz": 3,
+        "engagement": 464
+      },
+      {
+        "date": "2026-07-07",
+        "title": "Có thể bạn chưa biết — khoảng cách nhà đến chỗ làm",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 0,
+        "share": 1,
+        "react": 7,
+        "save": 0,
+        "view": 0,
+        "buzz": 2,
+        "engagement": 8
+      },
+      {
+        "date": "2026-07-07",
+        "title": "Ngoài chi phí mua nhà, những điều người sắp mua nhà phải biết sớm",
+        "links": "Single",
+        "platform": "Facebook",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 0,
+        "share": 1,
+        "react": 7,
+        "save": 0,
+        "view": 0,
+        "buzz": 2,
+        "engagement": 8
+      },
+      {
+        "date": "2026-07-15",
+        "title": "[ThoDia][B2C] Checklist kiểm tra môi trường sống",
+        "links": "Video",
+        "platform": "Youtube",
+        "type": "Page Owned",
+        "post": 1,
+        "repost": 0,
+        "comment": 0,
+        "share": 0,
+        "react": 1,
+        "save": 0,
+        "view": 516,
+        "buzz": 1,
+        "engagement": 1
       }
     ]
   }
