@@ -39,6 +39,28 @@
   ],
 
   "rfTarget": { "impression": 12000000, "reach": 1200000 },
+  "weeklyRfImpressionTarget": [
+    { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 720000 },
+    { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 1200000 },
+    { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 1152000 },
+    { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 1728000 },
+    { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 2880000 },
+    { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 864000 },
+    { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 1080000 },
+    { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 1296000 },
+    { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 1080000 }
+  ],
+  "weeklyOohTarget": [
+    { "week": "W1", "start": "2026-06-29", "end": "2026-07-05", "target": 0 },
+    { "week": "W2", "start": "2026-07-06", "end": "2026-07-12", "target": 0 },
+    { "week": "W3", "start": "2026-07-13", "end": "2026-07-19", "target": 18.333333333333332 },
+    { "week": "W4", "start": "2026-07-20", "end": "2026-07-26", "target": 18.333333333333332 },
+    { "week": "W5", "start": "2026-07-27", "end": "2026-08-02", "target": 18.333333333333332 },
+    { "week": "W6", "start": "2026-08-03", "end": "2026-08-09", "target": 0 },
+    { "week": "W7", "start": "2026-08-10", "end": "2026-08-16", "target": 0 },
+    { "week": "W8", "start": "2026-08-17", "end": "2026-08-23", "target": 0 },
+    { "week": "W9", "start": "2026-08-24", "end": "2026-08-30", "target": 0 }
+  ],
   "awarenessTarget": { "impression": 20720000, "reach": 3180000, "frequency": 6.5, "budgetSGD": 14500 },
 
   "weeklyImpressionTargetFB": [
