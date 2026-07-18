@@ -319,7 +319,7 @@ function render(data) {
   // ---- Buzz section (client-side filter theo thời gian + kênh/Type, dùng manual.paidLinkPosts) ----
   window.__paidLinkPosts = manual.paidLinkPosts || [];
   window.__manualForBuzz = manual;
-  window.__buzzChannelNames = Array.from(new Set(window.__paidLinkPosts.map(p => p.type || (p.platform + ' Owned')))).sort();
+  window.__buzzChannelNames = Array.from(new Set(window.__paidLinkPosts.map(p => postChannel(p)))).sort();
   window.__filtersT2 = window.__filtersT2 || { from: '2026-07-01', to: '2026-08-31', channels: new Set(window.__buzzChannelNames) };
   renderBuzzChannelFilterCheckboxes();
   rerenderBuzzSection();
@@ -343,7 +343,7 @@ function render(data) {
   tkRows.forEach(r => { tkByDate[r.date] = (tkByDate[r.date]||0) + r.impressions; });
   const tkTargetSeries = dates.map(d => { const wk = manual.weeklyImpressionTargetTiktok.find(w=>d>=w.start&&d<=w.end); return wk ? Math.round(wk.target/7) : null; });
   new Chart(document.getElementById('tkImpChart'), { type:'line', data:{ labels:dates, datasets:[
-      {label:'Impression thực tế (Tiktok)', data:dates.map(d=>tkByDate[d]||null), borderColor:'#111111', backgroundColor:'rgba(17,17,17,0.10)', fill:true, spanGaps:true, tension:0.2, pointRadius:2},
+      {label:'Impression thực tế (Tiktok)', data:dates.map(d=>tkByDate[d]||null), borderColor:'#EC4899', backgroundColor:'rgba(236,72,153,0.10)', fill:true, spanGaps:true, tension:0.2, pointRadius:2},
       {label:'Target/ngày (TB tuần)', data:tkTargetSeries, borderColor:'#5B6472', borderDash:[6,4], fill:false, stepped:true, pointRadius:0},
     ]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom'}}, scales:{x:{ticks:{maxTicksLimit:12}}} } });
 
@@ -352,7 +352,7 @@ function render(data) {
 // ---------- Social buzz & Social engagement — filter thời gian + kênh (client-side) ----------
 function postBuzz(p) { return p.post + p.repost + p.comment + p.share; }
 function postEngagement(p) { return p.repost + p.comment + p.share + p.react + p.save; }
-function postChannel(p) { return p.type || (p.platform + ' Owned'); }
+function postChannel(p) { return `${p.platform} - ${p.type || 'Owned'}`; }
 
 function renderBuzzChannelFilterCheckboxes() {
   const container = document.getElementById('buzzChannelFilters');
@@ -413,7 +413,7 @@ function rerenderBuzzSection() {
   document.getElementById('buzzBody').innerHTML = byChannel.map(c => `<tr><td>${c.name}</td><td class="num">${c.post}</td><td class="num">${c.comment}</td><td class="num">${c.share}</td><td class="num">${c.repost}</td><td class="num">${c.react}</td><td class="num">${c.save}</td><td class="num">${c.buzz}</td><td class="num">${c.engagement}</td></tr>`).join('');
 
   const top20 = [...posts].sort((a,b)=>postBuzz(b)-postBuzz(a)).slice(0,20);
-  document.getElementById('topPostsBody').innerHTML = top20.map(p => `<tr><td>${p.date.split('-').reverse().join('/')}</td><td>${p.title}</td><td>${p.platform}</td><td>${postChannel(p)}</td><td class="num">${fmt(postBuzz(p))}</td><td class="num">${fmt(postEngagement(p))}</td></tr>`).join('') || '<tr><td colspan="6" style="color:var(--ink-soft)">Không có post khớp filter</td></tr>';
+  document.getElementById('topPostsBody').innerHTML = top20.map(p => `<tr><td>${p.date.split('-').reverse().join('/')}</td><td>${p.title}</td><td>${p.platform}</td><td>${p.type || 'Owned'}</td><td class="num">${fmt(postBuzz(p))}</td><td class="num">${fmt(postEngagement(p))}</td></tr>`).join('') || '<tr><td colspan="6" style="color:var(--ink-soft)">Không có post khớp filter</td></tr>';
 
   const pieColors = ['#F5811F','#2563AA','#1B8A5A','#B8790A','#7A5AF8','#C23B3B'];
   if (buzzPieInstance) buzzPieInstance.destroy();
