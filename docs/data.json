@@ -1,8 +1,9 @@
 {
-  "generatedAt": "2026-07-20T03:15:21Z",
+  "generatedAt": "2026-07-20T07:18:24.090Z",
   "campaignStart": "2026-07-01",
   "campaignEnd": "2026-08-31",
   "manual": {
+    "_readme": "File này Lox tự sửa tay + commit khi cần (OOH actual, ngân sách thật, post mới trong Paid link...). Script build_dashboard.py sẽ ĐỌC file này, KHÔNG ghi đè nó.",
     "campaign": {
       "name": "Thổ Địa Campaign — Nhà Tốt (Quận 12)",
       "timeline": "01/07/2026 – 30/08/2026",
@@ -450,39 +451,74 @@
       "available": true,
       "data": [
         {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "impressions": 114393,
-          "reach": 44635,
-          "spend_sgd": 112.63
+          "campaign_id": "120251446998690319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_exclude_quan12_0726_0826",
+          "objective": "OUTCOME_ENGAGEMENT",
+          "status": "ACTIVE",
+          "impressions": 14157.0,
+          "reach": 12529.0,
+          "frequency": 1.13,
+          "spend_sgd": 20.07
         },
         {
           "campaign_id": "120251321695200319",
           "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "impressions": 973161,
-          "reach": 526655,
-          "spend_sgd": 515.26
+          "objective": "OUTCOME_AWARENESS",
+          "status": "ACTIVE",
+          "impressions": 1010164.0,
+          "reach": 538265.0,
+          "frequency": 1.88,
+          "spend_sgd": 534.86
         },
         {
           "campaign_id": "120251321467150319",
           "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "impressions": 29168,
-          "reach": 19421,
-          "spend_sgd": 105.07
+          "objective": "OUTCOME_ENGAGEMENT",
+          "status": "ACTIVE",
+          "impressions": 30221.0,
+          "reach": 19986.0,
+          "frequency": 1.51,
+          "spend_sgd": 109.06
         },
         {
           "campaign_id": "120251297310390319",
           "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "impressions": 412074,
-          "reach": 147400,
-          "spend_sgd": 500.6
+          "objective": "OUTCOME_ENGAGEMENT",
+          "status": "ACTIVE",
+          "impressions": 418647.0,
+          "reach": 150445.0,
+          "frequency": 2.78,
+          "spend_sgd": 508.82
+        },
+        {
+          "campaign_id": "120251448019740319",
+          "campaign_name": "brand_reach_sale_pty_thodiacamp_exclude_fanengaged_b2c_hcm_0726_0826",
+          "objective": "OUTCOME_AWARENESS",
+          "status": "ACTIVE",
+          "impressions": 0,
+          "reach": 0,
+          "frequency": null,
+          "spend_sgd": 0
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "objective": "OUTCOME_ENGAGEMENT",
+          "status": "PAUSED",
+          "impressions": 115220.0,
+          "reach": 44762.0,
+          "frequency": 2.57,
+          "spend_sgd": 113.3
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
-          "impressions": 952623,
-          "reach": 501239,
-          "spend_sgd": 1049.23
+          "objective": "OUTCOME_ENGAGEMENT",
+          "status": "ACTIVE",
+          "impressions": 965227.0,
+          "reach": 509078.0,
+          "frequency": 1.9,
+          "spend_sgd": 1068.12
         }
       ]
     },
@@ -490,396 +526,412 @@
       "available": true,
       "data": [
         {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "campaign_id": "120251446998690319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_exclude_quan12_0726_0826",
           "date_start": "2026-07-20",
-          "impressions": 4716,
-          "reach": 3699,
-          "spend_sgd": 3.6
+          "impressions": 14157.0,
+          "reach": 12529.0,
+          "spend_sgd": 20.07
         },
         {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-19",
-          "impressions": 24657,
-          "reach": 16597,
-          "spend_sgd": 22.0
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-18",
-          "impressions": 24083,
-          "reach": 15853,
-          "spend_sgd": 22.13
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-16",
-          "impressions": 18089,
-          "reach": 12879,
-          "spend_sgd": 19.19
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-15",
-          "impressions": 16946,
-          "reach": 12050,
-          "spend_sgd": 17.99
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
-          "date_start": "2026-07-14",
-          "impressions": 7144,
-          "reach": 5581,
-          "spend_sgd": 7.62
-        },
-        {
-          "campaign_id": "120251328719970319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "campaign_id": "120251321695200319",
+          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
           "date_start": "2026-07-17",
-          "impressions": 18758,
-          "reach": 13495,
-          "spend_sgd": 20.1
+          "impressions": 149605.0,
+          "reach": 121682.0,
+          "spend_sgd": 79.53
         },
         {
           "campaign_id": "120251321695200319",
           "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
           "date_start": "2026-07-15",
-          "impressions": 132676,
-          "reach": 114000,
+          "impressions": 132676.0,
+          "reach": 114000.0,
           "spend_sgd": 70.44
         },
         {
           "campaign_id": "120251321695200319",
           "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
           "date_start": "2026-07-19",
-          "impressions": 190939,
-          "reach": 143816,
-          "spend_sgd": 101.52
+          "impressions": 191309.0,
+          "reach": 143950.0,
+          "spend_sgd": 101.74
         },
         {
           "campaign_id": "120251321695200319",
           "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
           "date_start": "2026-07-16",
-          "impressions": 139566,
-          "reach": 113593,
+          "impressions": 139566.0,
+          "reach": 113593.0,
           "spend_sgd": 73.72
         },
         {
           "campaign_id": "120251321695200319",
           "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-14",
-          "impressions": 140526,
-          "reach": 117436,
-          "spend_sgd": 73.98
-        },
-        {
-          "campaign_id": "120251321695200319",
-          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-20",
-          "impressions": 55044,
-          "reach": 49136,
-          "spend_sgd": 28.98
-        },
-        {
-          "campaign_id": "120251321695200319",
-          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
           "date_start": "2026-07-18",
-          "impressions": 164805,
-          "reach": 125628,
+          "impressions": 164805.0,
+          "reach": 125628.0,
           "spend_sgd": 87.09
         },
         {
           "campaign_id": "120251321695200319",
           "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
-          "date_start": "2026-07-17",
-          "impressions": 149605,
-          "reach": 121682,
-          "spend_sgd": 79.53
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
           "date_start": "2026-07-20",
-          "impressions": 1875,
-          "reach": 1688,
-          "spend_sgd": 4.13
+          "impressions": 91677.0,
+          "reach": 78476.0,
+          "spend_sgd": 48.36
         },
         {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-18",
-          "impressions": 7471,
-          "reach": 6481,
-          "spend_sgd": 19.32
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-19",
-          "impressions": 8686,
-          "reach": 7639,
-          "spend_sgd": 17.05
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-17",
-          "impressions": 5277,
-          "reach": 4410,
-          "spend_sgd": 17.71
-        },
-        {
-          "campaign_id": "120251321467150319",
-          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
-          "date_start": "2026-07-16",
-          "impressions": 2946,
-          "reach": 2610,
-          "spend_sgd": 17.59
+          "campaign_id": "120251321695200319",
+          "campaign_name": "brand_reach_pty_thodiacamp_b2c_0726_0826",
+          "date_start": "2026-07-14",
+          "impressions": 140526.0,
+          "reach": 117436.0,
+          "spend_sgd": 73.98
         },
         {
           "campaign_id": "120251321467150319",
           "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
           "date_start": "2026-07-15",
-          "impressions": 1674,
-          "reach": 1390,
+          "impressions": 1674.0,
+          "reach": 1390.0,
           "spend_sgd": 17.83
         },
         {
           "campaign_id": "120251321467150319",
           "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
+          "date_start": "2026-07-18",
+          "impressions": 7471.0,
+          "reach": 6481.0,
+          "spend_sgd": 19.32
+        },
+        {
+          "campaign_id": "120251321467150319",
+          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
+          "date_start": "2026-07-16",
+          "impressions": 2946.0,
+          "reach": 2610.0,
+          "spend_sgd": 17.59
+        },
+        {
+          "campaign_id": "120251321467150319",
+          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
           "date_start": "2026-07-14",
-          "impressions": 1239,
-          "reach": 1100,
+          "impressions": 1239.0,
+          "reach": 1100.0,
           "spend_sgd": 11.44
+        },
+        {
+          "campaign_id": "120251321467150319",
+          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
+          "date_start": "2026-07-19",
+          "impressions": 8715.0,
+          "reach": 7670.0,
+          "spend_sgd": 17.11
+        },
+        {
+          "campaign_id": "120251321467150319",
+          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
+          "date_start": "2026-07-17",
+          "impressions": 5277.0,
+          "reach": 4410.0,
+          "spend_sgd": 17.71
+        },
+        {
+          "campaign_id": "120251321467150319",
+          "campaign_name": "brand_eng_pty_thodiacamp_b2b_0726_0826",
+          "date_start": "2026-07-20",
+          "impressions": 2899.0,
+          "reach": 2734.0,
+          "spend_sgd": 8.06
+        },
+        {
+          "campaign_id": "120251297310390319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
+          "date_start": "2026-07-20",
+          "impressions": 28961.0,
+          "reach": 23349.0,
+          "spend_sgd": 32.11
+        },
+        {
+          "campaign_id": "120251297310390319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
+          "date_start": "2026-07-19",
+          "impressions": 47807.0,
+          "reach": 34016.0,
+          "spend_sgd": 60.37
+        },
+        {
+          "campaign_id": "120251297310390319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
+          "date_start": "2026-07-13",
+          "impressions": 36663.0,
+          "reach": 22718.0,
+          "spend_sgd": 40.62
         },
         {
           "campaign_id": "120251297310390319",
           "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
           "date_start": "2026-07-18",
-          "impressions": 58646,
-          "reach": 41578,
+          "impressions": 58646.0,
+          "reach": 41578.0,
           "spend_sgd": 72.12
         },
         {
           "campaign_id": "120251297310390319",
           "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
           "date_start": "2026-07-14",
-          "impressions": 81290,
-          "reach": 49698,
+          "impressions": 81290.0,
+          "reach": 49698.0,
           "spend_sgd": 101.78
         },
         {
           "campaign_id": "120251297310390319",
           "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
           "date_start": "2026-07-17",
-          "impressions": 63174,
-          "reach": 43097,
+          "impressions": 63174.0,
+          "reach": 43097.0,
           "spend_sgd": 73.02
         },
         {
           "campaign_id": "120251297310390319",
           "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-19",
-          "impressions": 47664,
-          "reach": 33968,
-          "spend_sgd": 60.3
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
           "date_start": "2026-07-16",
-          "impressions": 51922,
-          "reach": 35420,
+          "impressions": 51922.0,
+          "reach": 35420.0,
           "spend_sgd": 70.44
         },
         {
           "campaign_id": "120251297310390319",
           "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-20",
-          "impressions": 22531,
-          "reach": 18903,
-          "spend_sgd": 23.96
-        },
-        {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
           "date_start": "2026-07-15",
-          "impressions": 50184,
-          "reach": 34182,
+          "impressions": 50184.0,
+          "reach": 34182.0,
           "spend_sgd": 58.36
         },
         {
-          "campaign_id": "120251297310390319",
-          "campaign_name": "brand_eng_sale_pty_thodiacamp_b2c_quan12_0726_0826",
-          "date_start": "2026-07-13",
-          "impressions": 36663,
-          "reach": 22718,
-          "spend_sgd": 40.62
+          "campaign_id": "120251448019740319",
+          "campaign_name": "brand_reach_sale_pty_thodiacamp_exclude_fanengaged_b2c_hcm_0726_0826",
+          "date_start": null,
+          "impressions": 0,
+          "reach": 0,
+          "spend_sgd": 0
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "date_start": "2026-07-17",
+          "impressions": 18758.0,
+          "reach": 13495.0,
+          "spend_sgd": 20.1
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "date_start": "2026-07-18",
+          "impressions": 24083.0,
+          "reach": 15853.0,
+          "spend_sgd": 22.13
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "date_start": "2026-07-16",
+          "impressions": 18089.0,
+          "reach": 12879.0,
+          "spend_sgd": 19.19
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "date_start": "2026-07-19",
+          "impressions": 24701.0,
+          "reach": 16690.0,
+          "spend_sgd": 22.06
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "date_start": "2026-07-15",
+          "impressions": 16946.0,
+          "reach": 12050.0,
+          "spend_sgd": 17.99
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "date_start": "2026-07-20",
+          "impressions": 5499.0,
+          "reach": 4263.0,
+          "spend_sgd": 4.21
+        },
+        {
+          "campaign_id": "120251328719970319",
+          "campaign_name": "brand_eng_sale_pty_thodiacamp_KV_b2c_0726_0826",
+          "date_start": "2026-07-14",
+          "impressions": 7144.0,
+          "reach": 5581.0,
+          "spend_sgd": 7.62
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-01",
-          "impressions": 51468,
-          "reach": 48705,
+          "impressions": 51468.0,
+          "reach": 48705.0,
           "spend_sgd": 39.05
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-12",
-          "impressions": 55137,
-          "reach": 39804,
+          "impressions": 55137.0,
+          "reach": 39804.0,
           "spend_sgd": 67.99
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-19",
-          "impressions": 27715,
-          "reach": 22222,
-          "spend_sgd": 41.04
+          "impressions": 27764.0,
+          "reach": 22258.0,
+          "spend_sgd": 41.12
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-18",
-          "impressions": 26819,
-          "reach": 22784,
+          "impressions": 26819.0,
+          "reach": 22784.0,
           "spend_sgd": 40.91
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-17",
-          "impressions": 24365,
-          "reach": 19610,
+          "impressions": 24365.0,
+          "reach": 19610.0,
           "spend_sgd": 38.5
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-16",
-          "impressions": 27712,
-          "reach": 22259,
+          "impressions": 27712.0,
+          "reach": 22259.0,
           "spend_sgd": 42.54
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-15",
-          "impressions": 21309,
-          "reach": 17213,
+          "impressions": 21309.0,
+          "reach": 17213.0,
           "spend_sgd": 36.48
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-14",
-          "impressions": 25223,
-          "reach": 20099,
+          "impressions": 25223.0,
+          "reach": 20099.0,
           "spend_sgd": 39.1
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-13",
-          "impressions": 35340,
-          "reach": 26003,
+          "impressions": 35340.0,
+          "reach": 26003.0,
           "spend_sgd": 54.05
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-11",
-          "impressions": 69781,
-          "reach": 49403,
+          "impressions": 69781.0,
+          "reach": 49403.0,
           "spend_sgd": 73.39
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-02",
-          "impressions": 47968,
-          "reach": 42811,
+          "impressions": 47968.0,
+          "reach": 42811.0,
           "spend_sgd": 39.0
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-10",
-          "impressions": 75915,
-          "reach": 54333,
+          "impressions": 75915.0,
+          "reach": 54333.0,
           "spend_sgd": 85.55
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-09",
-          "impressions": 53637,
-          "reach": 43464,
+          "impressions": 53637.0,
+          "reach": 43464.0,
           "spend_sgd": 54.15
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-08",
-          "impressions": 48819,
-          "reach": 44243,
+          "impressions": 48819.0,
+          "reach": 44243.0,
           "spend_sgd": 66.51
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-07",
-          "impressions": 49706,
-          "reach": 45608,
+          "impressions": 49706.0,
+          "reach": 45608.0,
           "spend_sgd": 68.15
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-06",
-          "impressions": 60517,
-          "reach": 52355,
+          "impressions": 60517.0,
+          "reach": 52355.0,
           "spend_sgd": 64.01
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-05",
-          "impressions": 76512,
-          "reach": 62782,
+          "impressions": 76512.0,
+          "reach": 62782.0,
           "spend_sgd": 65.08
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-04",
-          "impressions": 118569,
-          "reach": 108458,
+          "impressions": 118569.0,
+          "reach": 108458.0,
           "spend_sgd": 88.88
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-03",
-          "impressions": 47800,
-          "reach": 43910,
+          "impressions": 47800.0,
+          "reach": 43910.0,
           "spend_sgd": 33.94
         },
         {
           "campaign_id": "120250905291160319",
           "campaign_name": "brand_eng_sale_pty_b2c_0726",
           "date_start": "2026-07-20",
-          "impressions": 8311,
-          "reach": 7422,
-          "spend_sgd": 10.91
+          "impressions": 20866.0,
+          "reach": 19517.0,
+          "spend_sgd": 29.72
         }
       ]
     }
@@ -888,115 +940,155 @@
     "available": true,
     "data": [
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-07",
         "impressions": 33851,
         "reach": 33293,
+        "video_views": 33513,
         "spend_usd": 8.23
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-08",
         "impressions": 88916,
         "reach": 85854,
+        "video_views": 88075,
         "spend_usd": 20.56
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-09",
         "impressions": 81201,
         "reach": 78859,
+        "video_views": 80510,
         "spend_usd": 21.09
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-10",
         "impressions": 63897,
         "reach": 46522,
+        "video_views": 63332,
         "spend_usd": 15.64
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-11",
         "impressions": 95537,
         "reach": 65361,
+        "video_views": 95027,
         "spend_usd": 20.91
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-12",
         "impressions": 65369,
         "reach": 47222,
+        "video_views": 64998,
         "spend_usd": 13.42
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-13",
         "impressions": 713,
         "reach": 684,
+        "video_views": 706,
         "spend_usd": 0.11
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-14",
         "impressions": 2,
         "reach": 2,
+        "video_views": 2,
         "spend_usd": 0.0
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826.",
+        "date": "2026-07-14",
+        "impressions": 108,
+        "reach": 108,
+        "video_views": 108,
+        "spend_usd": 0.04
+      },
+      {
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-15",
         "impressions": 0,
         "reach": 0,
+        "video_views": 0,
         "spend_usd": 0.0
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826.",
+        "date": "2026-07-15",
+        "impressions": 0,
+        "reach": 0,
+        "video_views": 0,
+        "spend_usd": 0.0
+      },
+      {
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-16",
         "impressions": 0,
         "reach": 0,
+        "video_views": 0,
         "spend_usd": 0.0
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826.",
+        "date": "2026-07-16",
+        "impressions": 0,
+        "reach": 0,
+        "video_views": 0,
+        "spend_usd": 0.0
+      },
+      {
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-17",
         "impressions": 0,
         "reach": 0,
+        "video_views": 0,
         "spend_usd": 0.0
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826.",
+        "date": "2026-07-17",
+        "impressions": 0,
+        "reach": 0,
+        "video_views": 0,
+        "spend_usd": 0.0
+      },
+      {
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-18",
         "impressions": 0,
         "reach": 0,
+        "video_views": 0,
         "spend_usd": 0.0
       },
       {
-        "campaign_id": "1870042810302466",
+        "campaign_name": "brand_videoviews_pty_thodiacamp_0726_0826.",
+        "date": "2026-07-18",
+        "impressions": 0,
+        "reach": 0,
+        "video_views": 0,
+        "spend_usd": 0.0
+      },
+      {
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-19",
         "impressions": 0,
         "reach": 0,
+        "video_views": 0,
         "spend_usd": 0.0
       },
       {
-        "campaign_id": "1870042810302466",
         "campaign_name": "brand_reach_pty_thodiacamp_0726",
         "date": "2026-07-20",
         "impressions": 0,
         "reach": 0,
+        "video_views": 0,
         "spend_usd": 0.0
       }
     ]
